@@ -13,13 +13,13 @@ Ce projet est une application de messagerie en temps réel qui permet aux utilis
 ## 📦 Architecture du Projet
 
 1. **Back-end** : Développé en **Node.js** avec **WebSocket** pour gérer la communication en temps réel.
-2. **Front-end** : Interface utilisateur en **HTML, CSS et JavaScript** pour envoyer, recevoir, et annoter les messages.
-3. **Base de données** : Utilisation de **MongoDB** pour stocker les utilisateurs, messages et annotations.
+2. **Front-end** : Interface utilisateur en **HTML,Php, CSS et JavaScript** pour envoyer, recevoir, et annoter les messages.
+3. **Base de données** : Utilisation de **Pgadmin** pour stocker les utilisateurs, messages et annotations.
 
 ## 📋 Pré-requis
 
 - **Node.js** (v14 ou plus récent)
-- **MongoDB** (ou une autre base de données NoSQL/SQL)
+- **Pgadmin** (ou une autre base de données NoSQL/SQL)
 - **NPM** (ou Yarn pour la gestion des dépendances)
 
 ## 🔧 Installation
