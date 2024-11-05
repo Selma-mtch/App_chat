@@ -88,26 +88,27 @@ h1 {
     font-size: 1.5rem;
     cursor: pointer;
     position: relative;
-    transition: transform 0.2s;
+    transition: transform 0.2s, color 0.2s;
 }
 
-.emoji-selector label:hover {
-    transform: scale(1.1);
-}
-
-/* Style des émojis non sélectionnés */
-.emoji-selector input[type="checkbox"] {
-    display: none;
-}
-
+/* État par défaut : émojis non sélectionnés en gris */
 .emoji-selector input[type="checkbox"] + label {
-    opacity: 0.6;
+    color: #aaa; /* Couleur gris clair par défaut */
+    opacity: 0.7;
 }
 
-/* Style des émojis sélectionnés */
+/* Émojis sélectionnés */
 .emoji-selector input[type="checkbox"]:checked + label {
+    color: #ffb400; /* Couleur d’accentuation pour les émojis sélectionnés */
     opacity: 1;
-    color: #ffb400; /* Couleur d’accentuation des émojis sélectionnés */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
     border-radius: 50%;
 }
+
+/* Lorsque 3 émojis sont sélectionnés, les autres deviennent grisés et inactifs */
+.emoji-selector input[type="checkbox"]:disabled + label {
+    color: #ccc; /* Gris neutre pour émojis désactivés */
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
