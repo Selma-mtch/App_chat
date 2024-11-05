@@ -10,6 +10,9 @@
     <div class="chat-container">
         <h1>💬 Messagerie avec Annotations par Émoji</h1>
 
+        <!-- Zone d'identification de l'utilisateur -->
+        <input type="text" id="username" placeholder="Votre nom" />
+
         <!-- Zone d'affichage des messages -->
         <div id="messageDisplayArea" class="message-display">
             <!-- Les messages s'afficheront ici -->
@@ -17,7 +20,6 @@
 
         <!-- Formulaire d'envoi de message -->
         <div class="message-form">
-            <!-- Sélecteur d'émoji -->
             <label for="emojiSelector">Choisissez une émoji :</label>
             <select id="emojiSelector">
                 <option value="😊">😊</option>
@@ -25,13 +27,9 @@
                 <option value="👍">👍</option>
                 <option value="❤️">❤️</option>
                 <option value="😢">😢</option>
-                <!-- Ajoutez d'autres options d'émoji si nécessaire -->
             </select>
 
-            <!-- Champ de saisie pour le message -->
             <input type="text" id="messageInput" placeholder="Écrivez votre message" />
-
-            <!-- Bouton d'envoi -->
             <button id="sendButton" onclick="sendMessage()">Envoyer</button>
         </div>
     </div>
