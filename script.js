@@ -1,50 +1,62 @@
 // script.js
 
-// Connexion au serveur WebSocket
 const socket = new WebSocket('ws://localhost:3000');
 
-// Écoute des événements WebSocket
 socket.onopen = () => console.log('Connexion WebSocket ouverte');
 socket.onclose = () => console.log('Connexion WebSocket fermée');
 socket.onerror = error => console.error('Erreur WebSocket:', error);
 
-// Gestion de l'arrivée de messages
 socket.onmessage = event => {
     const messageData = JSON.parse(event.data);
-    displayMessage(messageData.user, messageData.message, messageData.emoji);
+    displayMessage(messageData.user_id, messageData.content, messageData.emojis, messageData.timestamp);
 };
 
 // Fonction pour afficher un message dans l'interface
-function displayMessage(user, message, emoji) {
+function displayMessage(user, message, emojis, timestamp) {
     const messageDisplayArea = document.getElementById('messageDisplayArea');
     const messageElement = document.createElement('p');
-    messageElement.textContent = `${emoji} ${user}: ${message}`;
+    messageElement.textContent = `${timestamp} - ${emojis.join(' ')} ${user}: ${message}`;
     messageDisplayArea.appendChild(messageElement);
-    messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight; // Faire défiler vers le bas
+    messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight;
+}
+
+// Limite le nombre de sélection d'émojis à 3
+function limitEmojiSelection() {
+    const checkboxes = document.querySelectorAll('#emojiSelector input[type="checkbox"]:checked');
+    if (checkboxes.length > 3) {
+        alert("Vous pouvez sélectionner un maximum de 3 émojis.");
+        checkboxes[checkboxes.length - 1].checked = false;
+    }
 }
 
 // Fonction pour envoyer un message
 function sendMessage() {
+    const username = document.getElementById('username').value;
     const messageInput = document.getElementById('messageInput');
-    const emojiSelector = document.getElementById('emojiSelector');
+    const emojiCheckboxes = document.querySelectorAll('#emojiSelector input[type="checkbox"]:checked');
     const message = messageInput.value;
-    const emoji = emojiSelector.value;
 
-    if (message.trim() !== '') {
-        // Créer l'objet message avec l'émoji sélectionnée
+    // Récupérer les émojis sélectionnés
+    const emojis = Array.from(emojiCheckboxes).map(checkbox => checkbox.value);
+
+    if (username.trim() && message.trim() && emojis.length > 0) {
+        // Créer l'objet message avec les émojis sélectionnés
         const messageData = {
-            user: 'Utilisateur', // Nom de l'utilisateur à remplacer par un nom dynamique
-            message: message,
-            emoji: emoji
+            user: username,
+            content: message,
+            emojis: emojis
         };
 
         // Envoyer le message au serveur WebSocket
         socket.send(JSON.stringify(messageData));
 
         // Afficher le message dans l'interface
-        displayMessage('Vous', message, emoji);
+        displayMessage('Vous', message, emojis, new Date().toLocaleTimeString());
 
-        // Réinitialiser le champ de message
+        // Réinitialiser le champ de message et les cases à cocher
         messageInput.value = '';
+        emojiCheckboxes.forEach(checkbox => (checkbox.checked = false));
+    } else {
+        alert("Veuillez entrer un nom d'utilisateur, un message et au moins un émoji.");
     }
 }
