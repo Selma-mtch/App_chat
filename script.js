@@ -8,14 +8,14 @@ socket.onerror = error => console.error('Erreur WebSocket:', error);
 
 socket.onmessage = event => {
     const messageData = JSON.parse(event.data);
-    displayMessage(messageData.user_id, messageData.content, messageData.emojis, messageData.timestamp);
+    displayMessage(messageData.content, messageData.emojis, messageData.timestamp);
 };
 
 // Fonction pour afficher un message dans l'interface
-function displayMessage(user, message, emojis, timestamp) {
+function displayMessage(message, emojis, timestamp) {
     const messageDisplayArea = document.getElementById('messageDisplayArea');
     const messageElement = document.createElement('p');
-    messageElement.textContent = `${timestamp} - ${emojis.join(' ')} ${user}: ${message}`;
+    messageElement.textContent = `${timestamp} - ${emojis.join(' ')}: ${message}`;
     messageDisplayArea.appendChild(messageElement);
     messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight;
 }
@@ -31,7 +31,6 @@ function limitEmojiSelection() {
 
 // Fonction pour envoyer un message
 function sendMessage() {
-    const username = document.getElementById('username').value;
     const messageInput = document.getElementById('messageInput');
     const emojiCheckboxes = document.querySelectorAll('#emojiSelector input[type="checkbox"]:checked');
     const message = messageInput.value;
@@ -39,10 +38,9 @@ function sendMessage() {
     // Récupérer les émojis sélectionnés
     const emojis = Array.from(emojiCheckboxes).map(checkbox => checkbox.value);
 
-    if (username.trim() && message.trim() && emojis.length > 0) {
+    if (message.trim() && emojis.length > 0) {
         // Créer l'objet message avec les émojis sélectionnés
         const messageData = {
-            user: username,
             content: message,
             emojis: emojis
         };
@@ -51,12 +49,12 @@ function sendMessage() {
         socket.send(JSON.stringify(messageData));
 
         // Afficher le message dans l'interface
-        displayMessage('Vous', message, emojis, new Date().toLocaleTimeString());
+        displayMessage(message, emojis, new Date().toLocaleTimeString());
 
         // Réinitialiser le champ de message et les cases à cocher
         messageInput.value = '';
         emojiCheckboxes.forEach(checkbox => (checkbox.checked = false));
     } else {
-        alert("Veuillez entrer un nom d'utilisateur, un message et au moins un émoji.");
+        alert("Veuillez entrer un message et au moins un émoji.");
     }
 }
