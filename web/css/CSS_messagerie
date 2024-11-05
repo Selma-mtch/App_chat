@@ -1,0 +1,113 @@
+/* Style général de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    width: 400px;
+    max-width: 90%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    padding: 15px;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+/* Zone d'affichage des messages */
+.message-display {
+    height: 300px;
+    padding: 10px;
+    overflow-y: auto;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-display p {
+    margin: 5px 0;
+    padding: 8px;
+    background: #e9efff;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Style du formulaire */
+.message-form {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style du champ de message */
+#messageInput {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+/* Style du bouton d'envoi */
+#sendButton {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sendButton:hover {
+    background-color: #45a049;
+}
+
+/* Style du sélecteur d'émojis */
+.emoji-selector {
+    display: flex;
+    justify-content: space-between;
+}
+
+.emoji-selector label {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.emoji-selector label:hover {
+    transform: scale(1.1);
+}
+
+/* Style des émojis non sélectionnés */
+.emoji-selector input[type="checkbox"] {
+    display: none;
+}
+
+.emoji-selector input[type="checkbox"] + label {
+    opacity: 0.6;
+}
+
+/* Style des émojis sélectionnés */
+.emoji-selector input[type="checkbox"]:checked + label {
+    opacity: 1;
+    color: #ffb400; /* Couleur d’accentuation des émojis sélectionnés */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
