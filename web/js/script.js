@@ -31,6 +31,18 @@ function limitEmojiSelection() {
     });
 }
 
+// Limite le nombre de sélection d'émojis à 3
+function limitEmojiSelection() {
+    const checkboxes = document.querySelectorAll('#emojiSelector input[type="checkbox"]');
+    const selectedCheckboxes = document.querySelectorAll('#emojiSelector input[type="checkbox"]:checked');
+
+    // Si 3 émojis sont sélectionnés, désactiver les autres cases non cochées
+    checkboxes.forEach(checkbox => {
+        checkbox.disabled = selectedCheckboxes.length >= 3 && !checkbox.checked;
+    });
+}
+
+
 // Fonction pour envoyer un message
 function sendMessage() {
     const messageInput = document.getElementById('messageInput');
