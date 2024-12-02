@@ -1,0 +1,63 @@
+
+
+
+.debut{
+    text-align: center;
+}
+.container{
+    width: 300px;
+    height: 500px;
+    background-color: #b9ebed;
+    border-radius: 15px ;
+    padding: 5%;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2) ;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+    align-items: center;
+    
+}
+
+#genre{
+    border-radius: 8px ;
+    border-color: black;
+    background-color: white;
+    border-style: solid;
+    height:25px;
+    width:250px;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    z-index: 15px;
+    align-items: center;
+}
+
+.rappele{
+    margin-top: 10%;
+}
+
+#sumbit{
+    background-color: black;
+    color: rgb(255, 255, 255);
+    border-radius: 8px ;
+    align-items: center;
+}
+
+label{
+    display: block;
+
+}
+
+input{
+    border-radius: 8px ;
+    border-color: black;
+    background-color: white;
+    border-style: solid;
+    height:25px;
+    width:250px;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    z-index: 15px;
+    align-items: center;
+}
+
+footer{
+    margin-left: 30%;
+}
