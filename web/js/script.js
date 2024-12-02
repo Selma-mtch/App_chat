@@ -76,3 +76,11 @@ function sendMessage() {
         alert("Veuillez entrer un message et sélectionner au moins un émoji.");
     }
 }
+// Sélection du bouton(cheick)
+const politiqueButton = document.getElementById('politiqueButton');
+
+// Ajout d'un événement au clic
+politiqueButton.addEventListener('click', () => {
+    // Rediriger vers la page de politique de confidentialité
+    window.location.href = 'politique.html';
+});
