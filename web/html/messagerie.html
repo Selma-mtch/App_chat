@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messagerie</title>
+    <link rel="stylesheet" href="messagerie.css">
+</head>
+<body>
+    <div class="messagerie">
+        <div class="barre">
+            <div class="nom-groupe">
+                <span class="sujet">Groupe: Apprendre à se connaître</span>
+            </div>
+        </div>
+
+        <div class="boite">
+            <div id="messageDisplayArea" class="message-display">
+                <!-- Les messages s'affichent ici -->
+            </div>
+        </div>
+
+        <div class="Ecriture">
+            <input class="barre-message" type="text" id="messageInput" placeholder="Écrivez votre message"/>
+            <button class="envoie" onclick="envoyerMessage()">Envoyer</button>
+        </div>
+    </div>
+
+    <script src="messagerie.js"></script>
+</body>
+</html>

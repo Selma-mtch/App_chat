@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.messagerie {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.barre {
+    background-color: #49DCEC;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    opacity: 30%;
+}
+
+.sujet {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.boite {
+    height: 700px;
+    padding: 10px;
+    background: linear-gradient(to bottom, #61FFF2, #49DCEC);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: scroll;
+}
+
+.message-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: right;
+    max-height: 100%; 
+}
+
+.message {
+    max-width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #e1f5fe;
+    align-self: flex-start; 
+}
+
+.messageenvoye {
+    background-color: #cde2f3; 
+    align-self: flex-end;
+}
+
+.Ecriture {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.barre-message {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.envoie {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
