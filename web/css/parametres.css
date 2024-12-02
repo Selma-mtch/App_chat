@@ -1,0 +1,70 @@
+#titre {
+    text-align: center;
+    color: black;
+    text-decoration: underline;
+    font-size: 2.5em;
+}
+
+#image {
+    width: 100px;
+    margin-right: 0px;
+    vertical-align: middle;
+}
+
+#all h2 {
+    background-color: #C2EEE4; /* Couleur du fond du rectangle */
+    color: black; /* Couleur du texte */
+    padding: 20px; /* Espacement autour du texte */
+    width: 95%; /* Largeur de 100% */
+    margin: 0; /* Supprime la marge par défaut */
+    font-weight: normal;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+#allde h2{
+    background-color: #C2EEE4; /* Couleur du fond du rectangle */
+    color: black; /* Couleur du texte */
+    padding: 20px; /* Espacement autour du texte */
+    width: 95%; /* Largeur de 100% */
+    margin: 0; /* Supprime la marge par défaut */
+    font-weight: normal;
+    margin-top: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+#allde {
+    margin-top: 80px;
+}
+
+.alll {
+    background-color: whitesmoke;
+}
+
+button {
+    font-size: 16px; /* Taille du texte dans les boutons */
+    border: none; /* Enlève la bordure par défaut */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    font-weight: normal;
+}
+
+#desactiver {
+    background-color: #f44336; /* Couleur de fond du bouton Désactiver */
+    color: white; /* Couleur du texte */
+    margin-left: 280px;
+}
+
+#reactiver {
+    background-color: #4CAF50; /* Couleur de fond du bouton Réactiver */
+    color: white; /* Couleur du texte */
+}
+
+button:hover {
+    opacity: 0.8; /* Effet au survol */
+}
+
+
