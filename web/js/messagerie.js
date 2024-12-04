@@ -1,19 +1,24 @@
+// Fonction pour envoyer ton message
 function envoyerMessage() {
     var messageInput = document.getElementById('messageInput');
-    var messageText = messageInput.value;
+    var messageText = messageInput.value.trim(); 
 
-    if (messageText.trim() !== "") {
+    if (messageText !== "") {
+        // Creation nv messge
         var newMessage = document.createElement('div');
-        newMessage.classList.add('message', 'sent'); // Ajoutez la classe 'sent'
+        newMessage.classList.add('message', 'sent'); 
 
+        // Creer contenu messge
         var messageContent = document.createElement('p');
         messageContent.textContent = messageText;
         newMessage.appendChild(messageContent);
 
-        var messagesBox = document.getElementById('messageDisplayArea');
-        messagesBox.appendChild(newMessage);
+        // Ajouter ds zone affich
+        var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
+        messageDisplayAreaUser.appendChild(newMessage);
 
-        messagesBox.scrollTop = messagesBox.scrollHeight;
+        // permet de defiler vers haut et afficher derniermssge tout le temps
+        messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
 
         messageInput.value = '';
     }
@@ -21,6 +26,6 @@ function envoyerMessage() {
 
 document.getElementById('messageInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        envoyerMessage();
+        envoyerMessage(); 
     }
 });
