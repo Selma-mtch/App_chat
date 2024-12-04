@@ -1,4 +1,4 @@
- 
+  
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,22 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="../css/connexion.css">
+    <link rel="stylesheet" href="../css/general.css">
+
 </head>
 <body> 
+    <h1>PingMe</h1>
+    <img src="../img/logo.png" id="logo"></a>
     <h1>Connectez-vous pour commencer !</h1>
-    <br>
+    
     <div id="formulaire">
+
         <form method="POST">
-            <h3>
-            
-            <label> <img src="../img/enveloppe.png"> Adresse mail: <input type="text" name="addMail" placeholder="Entrez votre adresse mail" ></input></label>
-            </h3>
-            <h3>
-            <label>  <img src="../img/cadenas.png"> Mot de passe: <input type="text" name="mdp" placeholder="Choisissez votre mot de passe" ></input></label>
-            </h3>
-            <h3>
-            <input id='submit' type="submit" name="submit" value="Valider"></input>
-            </h3>
+             
+            <div>
+                <label for="addMail"> <img src="../img/enveloppe.png"/> Adresse mail: </label>
+                <input type="text" name="addMail" placeholder="Entrez votre adresse mail" required>
+            </div>
+
+            <div>
+                <label for=""mdp>  <img src="../img/cadenas.png"/> Mot de passe: </label>
+                <input type="text" name="mdp" placeholder="Choisissez votre mot de passe" required/>
+            </div>
+
+            <div>
+                <button id='submit' type="submit">Valider</button>
+            </div>
         </form>
     </div>
 
