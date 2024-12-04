@@ -5,60 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link rel="stylesheet" href="../css/CSS_inscription.css">
+    <link rel="stylesheet" href="../css/general.css">
+
 </head>
 <body>
-    <div class='debut'>
- <h1>Ping Me</h1>
+
+ <h1>Ping Me !</h1>
  <h2>Vous n'êtes toujours pas inscrit ?</h2>
- <h2>Inscriver vous pour commencer !</h2>
-    </div>
-    <div class = container>
-        <h3>Pseudo</h3>
-        <label for="pseudo">Choisissez votre Pseudo : </label>
-        <input type="text" id="pseudo" name="pseudo">
-        
+ <h3>Inscriver vous pour commencer !</h2>
 
+    <div id = 'formulaire'>
 
+            <label for="pseudo"> Entrez votres pseudo </label>
+            <input type="text" id="pseudo" name="pseudo" class="champs" placeholder="Entrez votre pseudo " required>
+ 
+            <label for="genre"> Choissisez votre genre</label>
+            <select id="genre" name="genre">
+                <option value="Option1">Homme</option>
+                <option value="Option2">Femme</option>
+                <option value="Option3">Dragon</option>
+                <option value="Option4">Luciole</option>
+                <option value="Option5">Extraterrestre</option>
+                <option value="Option6">Autre</option>
+            </select>
 
-        <h3>Genre</h3>
-        <label for="genre"> Choisissez votre genre : </label>
-        <select id="genre" name="genre">
-            <option value="Option1">Homme</option>
-            <option value="Option2">Femme</option>
-            <option value="Option3">Dragon</option>
-            <option value="Option4">Luciole</option>
-            <option value="Option5">Extraterrestre</option>
-            <option value="Option6">Autre</option>
-        </select>
-        <h3>Adresse email</h3>
-        
-        <div>
-        <label for="email"> Adresse email : </label>
-        <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required>
-        </div>
-        
-
-        <h3>Mot de passe</h3>
-        <div>
-        <label for="password">Mot de passe : </label>
-        <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
-        </div>
-       
-        <div class="rappele">
-        <label for="rappele">Se rappeler de moi</label>
-        <input type="checkbox" id="rappele" name="rappele">
+            <div>
+            <label for="email"> Entrez votre mail</label>
+            <input type="email" id="email" name="email" class="champs" placeholder="Entrez votre adresse email" required>
+            </div>
             
-        <label for="politique">J'accepte la politique de confidentialité</label>
-        <input type="checkbox" id="politique" name="politique">
+            <div>
+            <label for="password">Entrez votre mot de passe</label>
+            <input type="password" id="password" name="password" class="champs" placeholder="Entrez votre mot de passe" required>
+            </div>
         
-        </div>
+            <div class="rappele">
+            <label for="rappele">Se rappeler de moi</label>
+            <input type="checkbox" id="rappele"  name="rappele">
+            </div>
+                
 
-        <button type="sumbit" id="sumbit">VALIDER</button>
+            <div>
+            <label for="politique">J'accepte la  <a href="politique.html">politique de confidentialité </a></label>
+            <input type="checkbox" id="politique"  name="politique">
+            
+            </div>
 
-    <a href="politique.html">politique de confidentialité </a>
+            <button type="sumbit" id="sumbit">VALIDER</button>
+
+            
+
     </div>
     
-     <p>Déja inscrit ?<a href="connexion.html">Connectez vous !</a></p>
+    
+     <p>Déja inscrit ? <a href="connexion.html">Connectez vous</a> ! </p>
 
 </body>
 <footer>
