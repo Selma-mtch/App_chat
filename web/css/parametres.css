@@ -44,6 +44,7 @@ a {
     font-size: 1.8em;
     font-weight: 500;
     margin: 0;
+    margin-left: 35%;
 }
 
 #para {
@@ -120,7 +121,10 @@ main {
 /* Footer Styles (Optional) */
 footer {
     text-align: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    background-color: #f2f2f2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
