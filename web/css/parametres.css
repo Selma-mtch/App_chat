@@ -1,14 +1,23 @@
 #titre {
-    text-align: center;
+    text-align: ;
     color: black;
     text-decoration: underline;
     font-size: 2.5em;
+    margin: 0%;
 }
 
-#image {
+#retour {
+    width: 80px;
+    vertical-align: middle;
+    
+
+}
+
+#para {
     width: 100px;
     margin-right: 0px;
     vertical-align: middle;
+    margin: ;
 }
 
 #all h2 {
@@ -22,6 +31,7 @@
     font-size: 18px;
     border-radius: 10px;
     align-items: center;
+    cursor: pointer;
 }
 
 #allde h2{
@@ -34,6 +44,7 @@
     margin-top: 10px;
     font-size: 18px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 #allde {
@@ -58,13 +69,16 @@ button {
     margin-left: 280px;
 }
 
-#reactiver {
-    background-color: #4CAF50; /* Couleur de fond du bouton Réactiver */
-    color: white; /* Couleur du texte */
-}
-
 button:hover {
     opacity: 0.8; /* Effet au survol */
+}
+
+#all h2:hover {
+    opacity: 0.8;
+}
+
+#allde h2:hover {
+    opacity: 0.8;
 }
 
 
