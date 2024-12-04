@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+label{
+    display: block;
+    text-align:  center;
+    font-size: 1.5rem;
+    
+
+}
+
+#formulaire{
+    padding:20px;
+    background-color: #b9ebed;
+    border-radius: 15px ;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center; 
+}
+
+input{
+    border-radius: 15px ;
+    border-color: black;
+    background-color: white;
+    border-style: solid;
+    height:25px;
+    width:250px;
+    text-align: center;
+}
+
+footer{
+    position:fixed;
+    bottom:0;
+    text-align: center;
+    margin-bottom: 1px;
+    padding: 1rem;
+    background: #f1f1f1;
+    color:#666;
+    width:100%;
+}
+
+#sumbit{
+    
+    background-color: rgb(252, 252, 252);
+    color: rgb(0, 0, 0);
+    border-color: black;
+    border-style: solid;
+    border-radius: 18px ;
+    font-size: 1.5rem;
+    align-items: center;
+    height: 50px;
+    width: 250px;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
+
+}
+
+div{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
