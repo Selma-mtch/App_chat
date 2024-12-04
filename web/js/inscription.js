@@ -4,7 +4,7 @@ function verifcheck(event) {
     const checkbox = document.getElementById('politique');
 
     if (!checkbox.checked) {
-        alert("Vous devez accepter les conditions générales(politique de confidentialité) pour continuer");
+        alert("Vous devez accepter les conditions générales pour continuer");
         return false ;
     }
 
