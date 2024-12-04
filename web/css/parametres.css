@@ -1,50 +1,62 @@
-#titre {
-    text-align: ;
-    color: black;
-    text-decoration: underline;
-    font-size: 2.5em;
-    margin: 0%;
+/* Conteneur principal du header */
+#header-container {
+    display: flex; /* Active la mise en page en flexbox */
+    align-items: center; /* Centre les éléments verticalement */
+    justify-content: center; /* Place l'image "retour" à gauche et le titre au centre */
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box; /* Inclut le padding dans la largeur */
 }
 
+/* Image "retour" tout à gauche */
 #retour {
     width: 80px;
-    vertical-align: middle;
-    
-
+    margin: 0; /* Supprime les marges inutiles */
 }
 
+/* Titre centré avec l'image "paramètre" */
+#titre {
+    text-align: center;
+    flex-grow: 1; /* Permet au titre de prendre l'espace central */
+    display: flex;
+    align-items: center; /* Centre verticalement l'image et le texte */
+    justify-content: center; /* Centre horizontalement */
+    color: black;
+    font-size: 2.5em;
+    margin: 0;
+    text-decoration: underline;
+}
+
+/* Image "paramètre" */
 #para {
     width: 100px;
-    margin-right: 0px;
-    vertical-align: middle;
-    margin: ;
+    margin-right: 0; /* Espace entre l'image et le texte */
 }
 
 #all h2 {
     background-color: #C2EEE4; /* Couleur du fond du rectangle */
     color: black; /* Couleur du texte */
-    padding: 20px; /* Espacement autour du texte */
-    width: 95%; /* Largeur de 100% */
-    margin: 0; /* Supprime la marge par défaut */
-    font-weight: normal;
-    margin-top: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    align-items: center;
-    cursor: pointer;
+    padding: 20px 20px; /* Réduit le padding (haut/bas : 10px, gauche/droite : 20px) */
+    width: 40%; /* Réduit la largeur à 70% */
+    margin: 10px auto; /* Centre horizontalement et ajoute un espace vertical */
+    font-weight: normal; /* Texte non gras */
+    font-size: 18px; /* Taille du texte */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center; /* Centre le texte à l'intérieur */
 }
 
-#allde h2{
+
+
+#allde h2 {
     background-color: #C2EEE4; /* Couleur du fond du rectangle */
     color: black; /* Couleur du texte */
-    padding: 20px; /* Espacement autour du texte */
-    width: 95%; /* Largeur de 100% */
-    margin: 0; /* Supprime la marge par défaut */
-    font-weight: normal;
-    margin-top: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
+    padding: 20px 20px; /* Réduit le padding (haut/bas : 10px, gauche/droite : 20px) */
+    width: 40%; /* Réduit la largeur à 70% */
+    margin: 10px auto; /* Centre horizontalement et ajoute un espace vertical */
+    font-weight: normal; /* Texte non gras */
+    font-size: 18px; /* Taille du texte */
+    border-radius: 10px; /* Coins arrondis */
+    text-align: center; /* Centre le texte à l'intérieur */
 }
 
 #allde {
@@ -80,5 +92,6 @@ button:hover {
 #allde h2:hover {
     opacity: 0.8;
 }
+
 
 
