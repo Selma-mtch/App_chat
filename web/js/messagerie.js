@@ -1,52 +1,50 @@
-// Connexion au serveur WebSocket
-        const socket = new WebSocket('ws://localhost:8080');
+// Établir la connexion WebSocket avec le serveur
+const socket = new WebSocket('ws://localhost:8080'); // Assurez-vous que le serveur écoute sur ce port
 
-        // Lorsque la connexion est ouverte
-        socket.onopen = () => {
-            console.log('Connecté au serveur WebSocket');
-        };
+// Fonction pour envoyer un message via WebSocket
+function envoyerMessage() {
+    var messageInput = document.getElementById('messageInput');
+    var messageText = messageInput.value.trim(); 
 
-        // Lorsqu'un message est reçu du serveur
-        socket.onmessage = (event) => {
-            afficherMessage(event.data, false);
-        };
+    if (messageText !== "") {
+        // Envoi du message au serveur via WebSocket
+        socket.send(messageText);
 
-        // Fonction pour envoyer un message
-        function envoyerMessage() {
-            const messageInput = document.getElementById('messageInput');
-            const message = messageInput.value;
+        var newMessage = document.createElement('div');
+        newMessage.classList.add('message', 'sent'); 
 
-            if (message.trim() !== '') {
-                // Envoyer le message au serveur
-                socket.send(message);
+        var messageContent = document.createElement('p');
+        messageContent.textContent = messageText;
+        newMessage.appendChild(messageContent);
 
-                // Afficher le message dans l'interface utilisateur
-                afficherMessage(message, true);
+        var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
+        messageDisplayAreaUser.appendChild(newMessage);
 
-                // Réinitialiser le champ de saisie
-                messageInput.value = '';
-            }
-        }
+        // Permet de faire défiler vers le bas pour voir le dernier message
+        messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
 
-        // Fonction pour afficher un message dans la boîte de réception
-        function afficherMessage(message, isUser) {
-            const messageDisplayArea = document.getElementById('messageDisplayArea');
-            const messageElement = document.createElement('div');
-
-            // Ajout de classes selon l'expéditeur
-            messageElement.classList.add('message');
-            messageElement.classList.add(isUser ? 'message-user' : 'message-other');
-            messageElement.textContent = message;
-
-            // Ajouter le message à la zone d'affichage
-            messageDisplayArea.appendChild(messageElement);
-
-            // Défilement automatique vers le bas
-            messageDisplayArea.scrollTop = messageDisplayArea.scrollHeight;
-        }
+        messageInput.value = '';
+    }
+}
 
 document.getElementById('messageInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         envoyerMessage(); 
     }
 });
+
+socket.onmessage = function(event) {
+    var messageText = event.data;
+
+    var newMessage = document.createElement('div');
+    newMessage.classList.add('message', 'received'); // Marqué comme "reçu" par l'autre utilisateur
+
+    var messageContent = document.createElement('p');
+    messageContent.textContent = messageText;
+    newMessage.appendChild(messageContent);
+
+    var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
+    messageDisplayAreaUser.appendChild(newMessage);
+
+    messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
+};
