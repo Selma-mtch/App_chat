@@ -61,15 +61,16 @@ body {
 /* Style général des messages */
 .message {
     display: flex;
-    max-width: 90%;
+    max-width: 90%; /* Empêche le message de dépasser la largeur du container */
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 12px;
     background-color: #e1f5fe;
     align-self: flex-end;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    word-wrap: break-word;  /* Permet de casser les mots si nécessaire */
+    overflow-wrap: break-word; /* Assure la rupture des mots longs */
     box-sizing: border-box;
+    white-space: normal; /* Permet aux mots de s'enrouler à la ligne */
 }
 
 /* Message envoyé (aligné à droite) */
