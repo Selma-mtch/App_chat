@@ -7,18 +7,38 @@ body {
     color: #333;
 }
 
-header {
+#header-container {
     background-color: #B9EBED;
     color: white;
     padding: 2rem;
-    text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alignement à gauche */
 }
 
-h1 {
+#titre {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #31bcc1;
+    text-align: center; /* Centre le titre horizontalement */
+    margin-left: 32%;
+}
+
+#retour {
+    width: 50px; /* Plus petite image de retour */
+    margin-right: 0px;
+    cursor: pointer; /* Indique que l'image est cliquable */
+    transition: transform 0.2s ease;
+    margin-left: 0; /* Assure une marge gauche nulle pour coller au bord */
+    align-items: center;
+    margin-right: 35%;
+}
+    
+#retour:hover {
+    transform: scale(1.1); /* Effet de zoom au survol */
 }
 
 main {
