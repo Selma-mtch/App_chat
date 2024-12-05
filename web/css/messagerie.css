@@ -44,10 +44,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 10px;
     box-sizing: border-box;
     overflow-y: auto;
 }
+
 .message-display {
     padding: 10px;
     display: flex;
@@ -58,27 +58,35 @@ body {
     overflow-y: auto;
 }
 
-
+/* Style général des messages */
 .message {
     display: flex;
-    max-width: 90%; /* Prevent the message from exceeding the container width */
+    max-width: 90%;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 12px;
     background-color: #e1f5fe;
     align-self: flex-end;
-    word-wrap: break-word; /* Ensure words break and don't overflow */
-    overflow-wrap: break-word; /* Ensure words wrap properly */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     box-sizing: border-box;
-    flex-grow: 0; /* Prevent messages from stretching */
-    white-space: normal; /* Allow text to wrap */
 }
 
+/* Message envoyé (aligné à droite) */
 .messageenvoye {
-    background-color: #cde2f3; 
+    background-color: #cde2f3;
     align-self: flex-end;
+    text-align: right;
 }
 
+/* Message reçu (aligné à gauche) */
+.messagerecu {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+    text-align: left;
+}
+
+/* Zone d'écriture */
 .Ecriture {
     display: flex;
     padding: 10px;
@@ -93,11 +101,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 20px;
     outline: none;
-}
-
-.user-droite{
-    align-self: flex-end;
-    text-align: right
 }
 
 .envoie {
