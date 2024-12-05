@@ -15,11 +15,17 @@
  <h3>Inscriver vous pour commencer !</h2>
 
     <div id = 'formulaire'>
+            <label for="nom"> Prénom: </label>
+            <input type="text" id="prenom" name="prenom" class="champs" placeholder="Entrez votre prénom" required>
 
-            <label for="pseudo"> <img src ="../img/utilisateur.png"/> Entrez votres pseudo </label>
+            <label for="nom"> Nom: </label>
+            <input type="text" id="nom" name="nom" class="champs" placeholder="Entrez votre nom" required>
+
+
+            <label for="pseudo"> <img src ="../img/utilisateur.png"/> Pseudo: </label>
             <input type="text" id="pseudo" name="pseudo" class="champs" placeholder="Entrez votre pseudo " required>
  
-            <label for="genre"> <img src ="../img/les-genres.png"/>Choissisez votre genre</label>
+            <label for="genre"> <img src ="../img/les-genres.png"/>Genre:</label>
             <select id="genre" name="genre">
                 <option value="Option1">Homme</option>
                 <option value="Option2">Femme</option>
@@ -30,12 +36,12 @@
             </select>
 
             <div>
-            <label for="email" ><img src ="../img/enveloppe.png"/> Entrez votre mail</label>
+            <label for="email" ><img src ="../img/enveloppe.png"/> Adresse mail:</label>
             <input type="email" id="email" name="email" class="champs" placeholder="Entrez votre adresse email" required>
             </div>
             
             <div>
-            <label for="password"> <img src ="../img/cadenas.png"/>Entrez votre mot de passe</label>
+            <label for="password"> <img src ="../img/cadenas.png"/>Mot de passe:</label>
             <input type="password" id="password" name="password" class="champs" placeholder="Entrez votre mot de passe" required>
             </div>
         
@@ -60,6 +66,7 @@
     
      <p>Déja inscrit ? <a href="connexion.html">Connectez vous</a> ! </p>
 
+     <script src="../js/inscription.js"></script>
 </body>
 <footer>
     &copy; 2024 PingMe . Tous droits réservés
