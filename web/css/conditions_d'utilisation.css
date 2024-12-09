@@ -8,23 +8,27 @@ body {
 }
 
 #header-container {
-    background-color: #B9EBED;
-    color: white;
-    padding: 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: flex-start; /* Alignement à gauche */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Pour que le header reste en haut */
+    top: 0;
+    z-index: 10; /* Pour s'assurer que le header reste au-dessus du contenu */
 }
 
 #titre {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: #31bcc1;
-    text-align: center; /* Centre le titre horizontalement */
-    margin-left: 32%;
+    font-size: 1.8em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    color: #333;
+    font-weight: 550;
 }
 
 #retour {
