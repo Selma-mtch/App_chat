@@ -35,56 +35,49 @@ body {
     background: linear-gradient(to bottom, #61FFF2, #49DCEC);
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Permet de scroller si le contenu dépasse */
+    overflow: hidden;
 }
 
 .ctrle-message {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-sizing: border-box;
-    flex-grow: 1; /* Permet à la zone de message de prendre l'espace disponible */
+    height: 100%;
+    overflow: hidden;
 }
 
 .message-display {
+    height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-y: auto;
-    flex-grow: 1; /* Permet à la zone de message de prendre l'espace disponible */
+    scroll-behavior: smooth;
 }
 
-/* Style général des messages */
 .message {
     display: flex;
-    max-width: 75%; /* Empêche le message de dépasser la largeur du container */
+    max-width: 75%;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 12px;
-    word-break: break-word;  /* Permet de casser les mots si nécessaire */
-    white-space: pre-wrap; /* Permet aux mots de s'enrouler à la ligne et conserve les espaces blancs */
+    word-break: break-word;
+    white-space: pre-wrap;
     box-sizing: border-box;
 }
 
-/* Message envoyé (aligné à droite) */
 .message.sent {
-    background-color: white; /* Fond blanc */
-    align-self: flex-end; /* Alignement à droite */
+    background-color: white;
+    align-self: flex-end;
     text-align: right;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre intérieure pour l'effet creusé */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Message reçu (aligné à gauche) */
 .message.received {
-    background-color: white; /* Fond blanc */
-    align-self: flex-start; /* Alignement à gauche */
+    background-color: white;
+    align-self: flex-start;
     text-align: left;
-    box-shadow: inset -2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre intérieure pour l'effet creusé */
+    box-shadow: inset -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Zone d'écriture */
 .Ecriture {
     display: flex;
     padding: 10px;
@@ -99,7 +92,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 20px;
     outline: none;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); /* Effet creusé */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .envoie {
@@ -111,10 +104,10 @@ body {
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Effet de relief */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .envoie:active {
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Effet enfoncé quand on clique */
-    transform: translateY(1px); /* Léger déplacement vers le bas pour accentuer l'effet */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    transform: translateY(1px);
 }

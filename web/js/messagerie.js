@@ -1,6 +1,12 @@
 // Établir la connexion WebSocket avec le serveur
 const socket = new WebSocket('ws://localhost:8080'); // Assurez-vous que le serveur écoute sur ce port
 
+// Fonction pour faire défiler automatiquement vers le bas
+function scrollToBottom() {
+    var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
+    messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
+}
+
 // Fonction pour envoyer un message via WebSocket
 function envoyerMessage() {
     var messageInput = document.getElementById('messageInput');
@@ -20,19 +26,21 @@ function envoyerMessage() {
         var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
         messageDisplayAreaUser.appendChild(newMessage);
 
-        // Permet de faire défiler vers le bas pour voir le dernier message
-        messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
+        // Fait défiler vers le bas de manière fluide
+        scrollToBottom();
 
         messageInput.value = '';
     }
 }
 
+// Ajouter un événement pour détecter l'appui sur Entrée
 document.getElementById('messageInput').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         envoyerMessage();
     }
 });
 
+// Gestion des messages reçus via WebSocket
 socket.onmessage = function (event) {
     var messageData = event.data;
 
@@ -63,5 +71,9 @@ function afficherMessage(messageText, type) {
     var messageDisplayAreaUser = document.getElementById('messageDisplayAreaUser');
     messageDisplayAreaUser.appendChild(newMessage);
 
-    messageDisplayAreaUser.scrollTop = messageDisplayAreaUser.scrollHeight;
+    // Fait défiler vers le bas de manière fluide
+    scrollToBottom();
 }
+
+// Ajouter un défilement automatique au chargement de la page
+window.addEventListener('load', scrollToBottom);
