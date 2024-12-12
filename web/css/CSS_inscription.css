@@ -23,3 +23,32 @@
 img{
     width: 30px;
 }
+
+/* Bordures rouges pour les champs invalides */
+input.error, select.error {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+/* Messages d'erreur */
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    display: none; /* Masqué par défaut */
+}
+
+/* Bouton désactivé */
+.disabled {
+    pointer-events: none; /* Empêche le clic */
+    color: rgb(245, 12, 12);
+    text-decoration: none;
+    cursor: not-allowed; /* Montre un curseur bloqué */
+}
+
+/* Bouton activé */
+.enabled {
+    pointer-events: auto; /* Permet le clic */
+    color: rgb(30, 220, 17);
+    text-decoration: none;
+    cursor: pointer;
+}
