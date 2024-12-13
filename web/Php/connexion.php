@@ -1,5 +1,7 @@
 
+
 <?php 
+require 'creer_cookie.php';
 
 $titre = "Connexion" ;
 
@@ -22,12 +24,12 @@ require 'debut.php';
              
             <div>
                 <label for="addMail"> <img src="../img/enveloppe.png"/> Adresse mail: </label>
-                <input type="text" name="addMail" placeholder="Entrez votre adresse mail" required>
+                <input id="addMail" type="text" name="addMail" placeholder="Entrez votre adresse mail" required>
             </div>
 
             <div>
                 <label for="password">  <img src="../img/cadenas.png"/> Mot de passe: </label>
-                <input type="password" name="password" placeholder="Entrez votre mot de passe" required/>
+                <input id="password" type="password" name="password" placeholder="Entrez votre mot de passe" required/>
             </div>
 
             <div>
