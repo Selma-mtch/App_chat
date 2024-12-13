@@ -1,44 +1,45 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    line-height: 1.7;
+    font-family: 'Roboto', sans-serif;
+    background-color: whitesmoke;
     margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
     color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 #header-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alignement à gauche */
+    justify-content: flex-start;
     padding: 20px;
-    width: 100%;
+    width: 1365px;
+    height: 84px;
     box-sizing: border-box;
     background-color: #f0f0f0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky; /* Pour que le header reste en haut */
+    position: sticky;
     top: 0;
-    z-index: 10; /* Pour s'assurer que le header reste au-dessus du contenu */
+    z-index: 10;
 }
 
 #titre {
-    font-size: 1.8em;
-    font-weight: 500;
     display: flex;
     align-items: center;
+    color: #2c3e50;
+    font-size: 1.8em;
+    font-weight: 500;
     margin: auto;
-    color: #333;
-    font-weight: 550;
+    font-weight: 500;
 }
 
 #retour {
-    width: 50px; /* Plus petite image de retour */
-    margin-right: 0px;
+    width: 40px; /* Plus petite image de retour */
+    margin-right: 20px;
     cursor: pointer; /* Indique que l'image est cliquable */
     transition: transform 0.2s ease;
-    margin-left: 0; /* Assure une marge gauche nulle pour coller au bord */
-    align-items: center;
-    margin-right: 35%;
 }
     
 #retour:hover {
