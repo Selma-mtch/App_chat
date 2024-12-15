@@ -1,0 +1,99 @@
+#header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+#retour {
+    width: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#retour:hover {
+    transform: scale(1.1);
+}
+
+#titre {
+    color: #2c3e50;
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: auto;
+}
+
+.rond {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.rond > div {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rond > div:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+#rond_blanc {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+#rond_noire {
+    background-color: #000000;
+}
+
+#rond_bleu {
+    background-color: #3498db;
+}
+
+#rond_rouge {
+    background-color: #e74c3c;
+}
+
+#rond_vert {
+    background-color: #2ecc71;
+}
+
+#rond_gris {
+    background-color: #95a5a6;
+}
+
+#rond_violet {
+    background-color: #9b59b6;
+}
+
+#rond_rose {
+    background-color: #ff6f91;
+}
+
+#rond_jaune {
+    background-color: #f1c40f;
+}
+
+#rond_marron {
+    background-color: #8e5c42;
+}
+
+#rond_defaut {
+    background-color: #ecf0f1;
+    border: 1px dashed #bdc3c7;
+}
+
