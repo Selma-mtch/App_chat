@@ -49,7 +49,7 @@
                 <i class="fas fa-lock"></i>
                 <h2>Modifier le mot de passe</h2>
             </div>
-            <a href="politique.html">
+            <a href="politique.php">
                 <div class="setting-item">
                     <i class="fas fa-shield-alt"></i>
                     <h2>Politique de Confidentialité</h2>
