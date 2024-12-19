@@ -1,35 +1,49 @@
-DROP TABLE personne;
-CREATE TABLE personne (
-	id_personne SERIAL PRIMARY KEY,
-	email VARCHAR(255) UNIQUE NOT NULL,
-	nom Varchar(50),
-	prenom VARCHAR(50),
-	pseudo VARCHAR(50),
-	mdp VARCHAR(50),
-	genre CHAR(1),
-	CONSTRAINT email_format CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'),
-	CONSTRAINT type_genre CHECK (genre ~* '^[FM]$')
+-- Database: sae1
+
+CREATE TABLE Usera (
+    user_id INT PRIMARY KEY, 
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure de création du compte, peut se remplir par défaut
+    last_online_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Date et heure de dernière connexion
 );
 
-CREATE TABLE message (
-	id_message SERIAL PRIMARY KEY,
-	text VARCHAR(1000),
-	id_pers INT,
-	FOREIGN KEY (id_pers) REFERENCES personne(id_personne)
+CREATE TABLE UserStatus (
+    user_id INT PRIMARY KEY, 
+    is_online BOOLEAN, 
+    last_active_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP , 
+    FOREIGN KEY (user_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
 );
 
-CREATE TABLE emotion (
-	id_emotion INT PRIMARY KEY,
-	nom VARCHAR(20)
+CREATE TABLE Conversation (
+    conversation_id INT PRIMARY KEY, 
+    user_1_id INT, 
+    user_2_id INT, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP , 
+    FOREIGN KEY (user_1_id) REFERENCES Usera(user_id), -- Clé étrangère référençant la table Usera
+    FOREIGN KEY (user_2_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
+);
+CREATE TABLE Message (
+    message_id INT PRIMARY KEY, 
+    conversation_id INT, 
+    sender_id INT, 
+    receiver_id INT, 
+    content TEXT NOT NULL, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure d'envoi du message
+    FOREIGN KEY (conversation_id) REFERENCES Conversation(conversation_id), -- Clé étrangère référençant la table Conversation
+    FOREIGN KEY (sender_id) REFERENCES Usera(user_id), -- Clé étrangère référençant la table Usera
+    FOREIGN KEY (receiver_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
 );
 
-CREATE TABLE annotation(
-	ID SERIAL PRIMARY KEY,
-	id_message INT,
-	id_emotion INT,
-	FOREIGN KEY (id_message) REFERENCES message(id_message),
-	FOREIGN KEY (id_emotion) REFERENCES emotion(id_emotion),
-	CONSTRAINT unique_emotion_message UNIQUE (id_emotion, id_message)
-);
+CREATE TYPE emotion_enum AS ENUM ('joie', 'colere', 'tristesse', 'surprise', 'degout', 'peur');-- création du type enum
 
-ALTER TABLE personne DROP CONSTRAINT email_format;
+CREATE TABLE Annotation (
+    annotation_id INT PRIMARY KEY, 
+    message_id INT, 
+    annotator_id INT, 
+    emotion emotion_enum NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure de création de l'annotation
+    FOREIGN KEY (message_id) REFERENCES Message(message_id), -- Clé étrangère référençant la table Message
+    FOREIGN KEY (annotator_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
+);
