@@ -1,7 +1,7 @@
 <?php
 
 //Pour avoir la fonction e()
-require_once "Utils/functions.php";
+//require_once "Utils/functions.php";
 //Inclusion du modèle
 require_once "Models/Model.php";
 //Inclusion de la classe Controller
@@ -9,7 +9,7 @@ require_once "Controllers/Controller.php";
 require_once "Controllers/Controller_connexion.php";
 
 //Liste des contrôleurs -- A RENSEIGNER
-$controllers = ["connexion"];
+$controllers = ["connexion","accueil"];
 //Nom du contrôleur par défaut-- A RENSEIGNER
 $controller_default = "connexion";
 
