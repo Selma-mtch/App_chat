@@ -14,7 +14,7 @@ require 'debut.php';
 ?>
 <header>
     <section id="header-container">
-        <a href="#" onclick="history.back(); return false;">
+        <a href="#" onclick="history.back(); return false; ">
             <img id="retour" src="../img/retour.webp" alt="Retour">
         </a>
         <h1 id="titre">
