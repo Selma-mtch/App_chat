@@ -17,7 +17,7 @@ class Model {
     public function __construct()
     {
         try{
-        $this->bd= new PDO('pgsql:host=localhost;dbname=etudiants', '12306154', '100997257BG');
+        $this->bd= new PDO('mysql:host=localhost;dbname=appli', 'root');
         $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->bd->query("SET nameS 'utf8'");
         }catch(PDOException $e){
@@ -31,7 +31,7 @@ class Model {
     public static function getModel()
     {
         if (self::$instance === null) {
-            self::$instance = new self();
+            self::$instance = new Model();
         }
         return self::$instance;
     }
@@ -40,13 +40,13 @@ class Model {
     public function userExists($email) 
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT pseudo, pswd FROM personneSAE WHERE mail = :mail');
+        $query = $this->bd->prepare('SELECT mail, pswd, pseudo FROM user WHERE mail = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
-
+    
         // Récupérer l'utilisateur
-        $user= $query->fetch(); 
+        return $user= $query->fetch(); 
     }
 /**
      * Ajoute un utilsateur passé en paramètre dans la base de données.
