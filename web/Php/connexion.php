@@ -38,7 +38,7 @@ require 'debut.php';
         </form>
     </div>
     <p>Pas encore inscrit ? N'attendez plus !</p>
-    <a href="inscription.html">M'inscrire</a>
+    <a href="inscription.php">M'inscrire</a>
 
 <?php 
 $src1 = "../js/submit.js";
