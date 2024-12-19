@@ -7,9 +7,9 @@ abstract class Controller
     public function __construct()
     {
         //On détermine s'il existe dans l'url un paramètre action correspondant à une action du contrôleur
-        if (isset($_GET['action']) and method_exists($this, "action_" . $_GET["action"])) {
+        if (isset($_POST['action']) and method_exists($this, "action_" . $_POST["action"])) {
             //Si c'est le cas, on appelle cette action
-            $action = "action_" . $_GET["action"];
+            $action = "action_" . $_POST["action"];
             $this->$action();
         } else {
             //Sinon, on appelle l'action par défaut
