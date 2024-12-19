@@ -12,7 +12,7 @@
     <div class="container">
         <header class="header">
             <div class="menu-toggle">
-                <a href="parametres.html"> <i class="fas fa-cog"></i> </a>
+                <a href="parametres.php"> <i class="fas fa-cog"></i> </a>
             </div>
             <h1 class="title">Commencez une discussion</h1>
             <div class="send-icon">
