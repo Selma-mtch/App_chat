@@ -26,5 +26,4 @@ Ce projet est une application de messagerie en temps réel qui permet aux utilis
 
 1. **Cloner le dépôt** :
    ```bash
-   git clone https://github.com/votre-utilisateur/nom-du-projet.git
-   cd nom-du-projet
+   bash git clone https://github.com/Cheick6/SAE_S1.git
