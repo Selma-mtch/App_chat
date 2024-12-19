@@ -65,15 +65,15 @@ require 'debut.php';
     
         <!-- Politique -->
         <div>
-            <label for="politique">J'accepte la <a href="politique.html">politique de confidentialité</a></label>
+            <label for="politique">J'accepte la <a href="politique.php">politique de confidentialité</a></label>
             <input type="checkbox" id="politique" name="politique">
         </div>
     
         <!-- Bouton Valider -->
-        <button type="submit" id="submit" disabled><a href="accueil.html" aria-disabled="true"  class="disabled" id="validate-link">VALIDER</a></button>
+        <button type="submit" id="submit" disabled><a href="accueil.php" aria-disabled="true"  class="disabled" id="validate-link">VALIDER</a></button>
     </div>
  
-     <p>Déja inscrit ? <a href="connexion.html">Connectez vous</a> ! </p> 
+     <p>Déja inscrit ? <a href="connexion.php">Connectez vous</a> ! </p> 
  
 <?php 
 $src1 = "../js/inscription.js";
