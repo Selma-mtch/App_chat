@@ -41,7 +41,7 @@ require 'debut.php';
 
         <section>
             <h2>2. Confidentialité</h2>
-            <p>Nous respectons votre vie privée. Veuillez consulter notre <a href="politique.php">politique de confidentialité</a> pour en savoir plus sur la manière dont nous collectons, utilisons et protégeons vos données personnelles.</p>
+            <p>Nous respectons votre vie privée. Veuillez consulter notre <a href="politique.html">politique de confidentialité</a> pour en savoir plus sur la manière dont nous collectons, utilisons et protégeons vos données personnelles.</p>
         </section>
 
         <section>
