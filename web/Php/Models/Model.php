@@ -71,10 +71,37 @@ class Model {
 
     public function checkUser($email, $password){
         $query = $this->bd->prepare('SELECT*FROM personneSAE WHERE mail= :mail AND pswd= :pswd');
-        $requete->$execute([
+        $query->$execute([
             ':mail'=>$email,
             ':pswd' => $password,
         ]);
-        return $requete->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+        return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+    }
+
+    public function changePseudo($email, $pseudo){
+        $query = $this->bd->prepare('UPDATE personneSAE SET pseudo = :pseudo WHERE mail = :mail');
+        $query->execute([
+            ':mail' =>$email,
+            ':pseudo' =>$pseudo,
+        ]);
+        return $query->rowCount() > 0;
+
+    }
+
+    public function checkMdp($mdp){
+        $query = $this->bd->prepare('SELECT*FROM personneSAE WHERE pswd= :pswd');
+        $query->execute([
+            ':pswd' =>$mdp
+        ]);
+        return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+    }
+
+    public function changeMdp($actuel, $newmdp){
+        $query = $this->bd->prepare('UPDATE personneSAE SET pswd = :newmdp WHERE pswd = :pswd');
+        $query->execute([
+            ':newmdp' =>$newmdp,
+            ':pswd' =>$actuel,
+        ]);
+        return $query->rowCount() > 0;
     }
 }
