@@ -40,7 +40,7 @@ class Model {
     public function userExists($email) 
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT mail, pswd, pseudo FROM Usera WHERE mail = :mail');
+        $query = $this->bd->prepare('SELECT user_id,username, password_has FROM Usera WHERE mail = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
@@ -55,7 +55,7 @@ class Model {
     public function addUser($infos)
     {
         //Préparation de la requête
-        $requete = $this->bd->prepare('INSERT INTO Usera (pseudo, genre, mail, pswd) VALUES (:pseudo, :genre, :mail, :pswd)');
+        $requete = $this->bd->prepare('INSERT INTO Usera (username, genre, password_hash) VALUES (:pseudo, :genre, :mail, :pswd)');
 
         //Remplacement des marqueurs de place par les valeurs
         $marqueurs = ['pseudo', 'genre', 'mail', 'pswd'];
@@ -69,19 +69,21 @@ class Model {
         return (bool) $requete->rowCount();
     }
 
-    public function checkUser($email, $password){
-        $query = $this->bd->prepare('SELECT * FROM Usera WHERE mail= :mail AND pswd= :pswd');
-        $query->execute([
-            ':mail'=>$email,
-            ':pswd' => $password,
-        ]);
-        return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
-    }
+    /**
+    *public function checkUser($email, $password){
+    *    $query = $this->bd->prepare('SELECT*FROM Usera WHERE email= :mail AND password_hash= :pswd');
+    *    $query->$execute([
+    *        ':mail'=>$email,
+    *        ':pswd' => $password,
+    *    ]);
+    *    return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+    *}
+    */
 
     public function changePseudo($pseudo){
         if (isset($_COOKIE['user_id'])){
             $id = $_COOKIE['user_id'];
-            $query = $this->bd->prepare('UPDATE Usera SET pseudo = :pseudo WHERE user_id = :id');
+            $query = $this->bd->prepare('UPDATE Usera SET unsername = :pseudo WHERE user_id = :id');
             $query->execute([
                 ':id' =>$id,
                 ':pseudo' =>$pseudo,
@@ -92,7 +94,7 @@ class Model {
     }
 
     public function checkMdp($mdp){
-        $query = $this->bd->prepare('SELECT * FROM Usera WHERE pswd= :pswd');
+        $query = $this->bd->prepare('SELECT * FROM Usera WHERE password_hash= :pswd');
         $query->execute([
             ':pswd' =>$mdp
         ]);
@@ -100,7 +102,7 @@ class Model {
     }
 
     public function changeMdp($actuel, $newmdp){
-        $query = $this->bd->prepare('UPDATE Usera SET pswd = :newmdp WHERE pswd = :pswd');
+        $query = $this->bd->prepare('UPDATE Usera SET password_hash = :newmdp WHERE password_hash = :pswd');
         $query->execute([
             ':newmdp' =>$newmdp,
             ':pswd' =>$actuel,
