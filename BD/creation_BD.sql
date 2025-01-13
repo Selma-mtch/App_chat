@@ -1,10 +1,14 @@
 -- Database: sae1
 
 CREATE TABLE Usera (
-    user_id INT PRIMARY KEY, 
+    user_id INT SERIAL PRIMARY KEY, 
     username VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    genre CHAR(1),
     password_hash VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    CONSTRAINT type_genre CHECK (genre ~* '^[FM]$')
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure de création du compte, peut se remplir par défaut
     last_online_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Date et heure de dernière connexion
 );
