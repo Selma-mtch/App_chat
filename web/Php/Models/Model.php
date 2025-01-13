@@ -54,19 +54,29 @@ class Model {
      */
     public function addUser($infos)
     {
+        try{
         //Préparation de la requête
-        $requete = $this->bd->prepare('INSERT INTO Usera (username, genre, password_hash) VALUES (:pseudo, :genre, :mail, :pswd)');
+        $requete = $this->bd->prepare('
+        INSERT INTO Usera (username, nom, prenom, genre, email, password_hash)
+        VALUES (:pseudo, :nom, :prenom, :genre, :mail, :pswd)');
 
         //Remplacement des marqueurs de place par les valeurs
-        $marqueurs = ['pseudo', 'genre', 'mail', 'pswd'];
-        foreach ($marqueurs as $value) {
-            $requete->bindValue(':' . $value, $infos[$value]);
-        }
+        $success= $requete->$execute([
+                    ':pseudo'=>$infos['pseudo'], 
+                    ':nom'=>$infos['nom'], 
+                    ':prenom'=>$infos['prenom'], 
+                    ':genre'=>$infos['genre'],
+                    ':mail'=>$infos['email'],
+                    ':pswd'=> $infos['password_hash'],
+                ]);
 
-        //Exécution de la requête
-        $requete->execute();
-
-        return (bool) $requete->rowCount();
+        //Retourne true si l'insertion a réussi, sinon false
+        return $success;
+            }catch (PDOException $e) {
+                // Gestion des erreurs
+                echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
+                return false; // Retourne false en cas d'échec
+            }
     }
 
     /**
