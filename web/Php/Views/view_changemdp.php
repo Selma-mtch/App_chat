@@ -38,7 +38,7 @@
 <?php
 $src1 = "";
 $src2 = "";
-require 'fin.php';
+require 'view_fin.php';
 
 ?>
  
