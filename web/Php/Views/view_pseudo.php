@@ -34,7 +34,6 @@
     </div>
 </body>
 </html>
-
 <?php
 $src1 = "";
 $src2 = "";
