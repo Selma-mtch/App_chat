@@ -19,7 +19,7 @@ class Model {
         try{
         $this->bd= new PDO('mysql:host=localhost;dbname=appli', 'root');
         $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->bd->query("SET nameS 'utf8'");
+        $this->bd->query("SET NAMES 'utf8'");
         }catch(PDOException $e){
             die("Erreur de connexion à la base de données: ". $e->getMessage());
         }
@@ -40,7 +40,7 @@ class Model {
     public function userExists($email) 
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT mail, pswd, pseudo FROM user WHERE mail = :mail');
+        $query = $this->bd->prepare('SELECT mail, pswd, pseudo FROM Usera WHERE mail = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
@@ -55,7 +55,7 @@ class Model {
     public function addUser($infos)
     {
         //Préparation de la requête
-        $requete = $this->bd->prepare('INSERT INTO personneSAE (pseudo, genre, mail, pswd) VALUES (:pseudo, :genre, :mail, :pswd)');
+        $requete = $this->bd->prepare('INSERT INTO Usera (pseudo, genre, mail, pswd) VALUES (:pseudo, :genre, :mail, :pswd)');
 
         //Remplacement des marqueurs de place par les valeurs
         $marqueurs = ['pseudo', 'genre', 'mail', 'pswd'];
@@ -70,26 +70,29 @@ class Model {
     }
 
     public function checkUser($email, $password){
-        $query = $this->bd->prepare('SELECT*FROM personneSAE WHERE mail= :mail AND pswd= :pswd');
-        $query->$execute([
+        $query = $this->bd->prepare('SELECT * FROM Usera WHERE mail= :mail AND pswd= :pswd');
+        $query->execute([
             ':mail'=>$email,
             ':pswd' => $password,
         ]);
         return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
     }
 
-    public function changePseudo($email, $pseudo){
-        $query = $this->bd->prepare('UPDATE personneSAE SET pseudo = :pseudo WHERE mail = :mail');
-        $query->execute([
-            ':mail' =>$email,
-            ':pseudo' =>$pseudo,
-        ]);
-        return $query->rowCount() > 0;
-
+    public function changePseudo($pseudo){
+        if (isset($_COOKIE['user_id'])){
+            $id = $_COOKIE['user_id'];
+            $query = $this->bd->prepare('UPDATE Usera SET pseudo = :pseudo WHERE user_id = :id');
+            $query->execute([
+                ':id' =>$id,
+                ':pseudo' =>$pseudo,
+            ]);
+            return $query->rowCount() > 0;
+        }
+    return 'utilisateur introuvable reconnectez vous'; 
     }
 
     public function checkMdp($mdp){
-        $query = $this->bd->prepare('SELECT*FROM personneSAE WHERE pswd= :pswd');
+        $query = $this->bd->prepare('SELECT * FROM Usera WHERE pswd= :pswd');
         $query->execute([
             ':pswd' =>$mdp
         ]);
@@ -97,11 +100,25 @@ class Model {
     }
 
     public function changeMdp($actuel, $newmdp){
-        $query = $this->bd->prepare('UPDATE personneSAE SET pswd = :newmdp WHERE pswd = :pswd');
+        $query = $this->bd->prepare('UPDATE Usera SET pswd = :newmdp WHERE pswd = :pswd');
         $query->execute([
             ':newmdp' =>$newmdp,
             ':pswd' =>$actuel,
         ]);
         return $query->rowCount() > 0;
+    }
+
+    public function deconnexion(){
+        if (isset($_COOKIE['user_id'])){
+            $userId = $_COOKIE['user_id'];
+            $stmt = $this->bd->prepare("UPDATE Usera SET last_online_at = NOW() WHERE user_id = :user_id");
+            $stmt->execute(['user_id' => $userId]);
+            return $stmt->rowCount() > 0;
+        }
+        else{
+            return 'Utilisateur non connecté.';
+        }
+        
+        
     }
 }
