@@ -18,7 +18,7 @@ require 'debut.php';
     
     <div id="formulaire">
 
-        <form method="POST" action="index.php">
+        <form method="POST" action="index.php?controller=connexion&action=connexion">
              
             <div>
                 <label for="addMail"> <img src="../img/enveloppe.png" alt="Icône enveloppe"/> Adresse mail: </label>
@@ -44,7 +44,7 @@ require 'debut.php';
     </div>
 
 <p>Pas encore inscrit ? N'attendez plus !</p>
-    <a href="index.php?action=inscription">M'inscrire</a>
+    <a href="index.php?controller=inscription&action=inscription">M'inscrire</a>
 
 <?php 
 $src1 = "../js/submit.js";
