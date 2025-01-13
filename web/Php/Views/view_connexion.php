@@ -9,7 +9,7 @@ $href1= "../css/connexion.css";
 $rel2 = "stylesheet";
 $href2 = "../css/general.css";
 
-require 'debut.php';
+require 'view_debut.php';
 
 ?>
     <h1>PingMe</h1>
@@ -44,10 +44,10 @@ require 'debut.php';
     </div>
 
 <p>Pas encore inscrit ? N'attendez plus !</p>
-    <a href="index.php?controller=inscription&action=inscription">M'inscrire</a>
+   <a href="index.php?controller=inscription">M'inscrire</a>
 
 <?php 
 $src1 = "../js/submit.js";
 $src2 = "";
-require 'fin.php';
+require 'view_fin.php';
 ?>
