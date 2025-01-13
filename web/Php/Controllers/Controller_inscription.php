@@ -62,7 +62,7 @@ class Controller_inscription extends Controller
             }
 
             // Vérification si l'email existe déjà dans la base de données
-            if ($this->model->emailExists($email)) {
+            if ($this->model->userExists($email)) {
                 $message = "Un compte existe déjà avec cet email.";
                 $this->render('inscription', ['message' => $message]);
                 return;
@@ -81,7 +81,6 @@ class Controller_inscription extends Controller
             $result = $this->model->addUser($userData);
 
             if ($result) {
-                $message = "Inscription réussie. Vous pouvez maintenant vous connecter.";
                 // Redirige vers la page de connexion après l'inscription
                 header("Location: index.php?controller=connexion&action=connexion");
                 exit;
