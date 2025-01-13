@@ -17,6 +17,13 @@ class Controller_changePseudo extends Controller
         
     }
 
+    /**
+     * Action par défaut du contrôleur
+     */
+    public function action_default(){
+        $this->render('pseudo');
+    }
+
     public function action_changePseudo(){
         $message = '';
         if(isset($_POST['addMail']) && isset($_POST['nouveauPseudo']) ){
