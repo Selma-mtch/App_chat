@@ -1,5 +1,5 @@
 <?php 
-require 'creer_cookie.php';
+require 'view_creer_cookie.php';
 
 $titre = "Connexion" ;
 
