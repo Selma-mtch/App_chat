@@ -18,7 +18,7 @@ require 'view_debut.php';
 
     <div id="formulaire">
 
-        <form method="POST" action="index.php?controller=connexion&action=inscription">
+        <form method="POST" action="index.php?controller=inscription&action=inscription">
            
         <!-- Prénom -->
         <div>
@@ -45,9 +45,8 @@ require 'view_debut.php';
         <div>
             <label for="genre"> <img src="../img/les-genres.png" />Genre:</label>
             <select id="genre" name="genre" required>
-                <option value="">Sélectionnez un genre</option>
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
+                <option value="H">Homme</option>
+                <option value="F">Femme</option>
             </select>
             <small class="error-message">Veuillez sélectionner un genre.</small>
         </div>
