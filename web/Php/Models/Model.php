@@ -17,7 +17,7 @@ class Model {
     public function __construct()
     {
         try{
-        $this->bd= new PDO('mysql:host=localhost;dbname=appli', 'root');
+        $this->bd= new PDO('mysql:host=localhost;dbname=appli', 'root','root');
         $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->bd->query("SET NAMES 'utf8'");
         }catch(PDOException $e){
