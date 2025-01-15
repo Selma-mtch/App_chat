@@ -1,5 +1,34 @@
 // Établir la connexion WebSocket avec le serveur
-const socket = new WebSocket('ws://192.168.1.208:8080');
+const socket = new WebSocket('ws://172.20.10.4:8081');
+
+// Ajout du code de statut de la connexion
+const statusMessage = document.getElementById('status-message');
+
+socket.onopen = function(event) {
+ console.log("Connexion WebSocket établie avec le serveur !");
+  if (statusMessage){
+      statusMessage.textContent = 'Connecté';
+      statusMessage.style.color = 'green'; // change le texte en vert
+  }
+
+};
+
+socket.onerror = function (error) {
+  console.error("Erreur WebSocket :", error);
+  if (statusMessage){
+       statusMessage.textContent = 'Erreur de connexion';
+       statusMessage.style.color = 'red';// change le texte en rouge
+  }
+  console.log("Erreur de connexion avec le websocket:", error);
+};
+
+socket.onclose = function(event) {
+  console.log('Connexion WebSocket fermée');
+    if (statusMessage){
+         statusMessage.textContent = 'Déconnecté';
+       statusMessage.style.color = 'orange';// change le texte en orange
+  }
+};
 
 // Variable pour suivre si une annotation est en attente
 let annotationEnAttente = false;
@@ -36,7 +65,7 @@ function envoyerMessage() {
 
     // Empêcher l'envoi d'un message si une annotation est en attente
     if (annotationEnAttente) {
-        alert("Veuillez le message que vous venez de recevoir pour pouvoir en envoyer un nouveau");
+        alert("Veuillez annoter le message que vous venez de recevoir pour pouvoir en envoyer un nouveau");
         return;
     }
 
@@ -90,17 +119,6 @@ socket.onmessage = function (event) {
     // Lors de la réception d'un message, on indique qu'une annotation est en attente
     annotationEnAttente = true;
 };
-
-// Gestionnaire d'événement pour la connexion établie
-socket.onopen = function (event) {
-    console.log("Connexion WebSocket établie avec le serveur !");
-};
-
-// Gestionnaire d'événement pour les erreurs
-socket.onerror = function (error) {
-    console.error("Erreur WebSocket :", error);
-};
-
 // Fonction pour afficher un message
 function afficherMessage(messageData, showAnnotations) {
     var messageContainer = document.createElement('div');
