@@ -3,7 +3,7 @@
 $titre = "Messagerie" ;
     
 $rel1 = "stylesheet";
-$href1= "Cheick6/SAE_S1/web/css/messagerie.css";
+$href1= "../css/messagerie.css";
     
 $rel2 = "";
 $href2 = "";
