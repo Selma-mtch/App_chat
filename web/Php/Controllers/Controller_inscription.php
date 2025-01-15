@@ -31,7 +31,7 @@ class Controller_inscription extends Controller
         $message = "";
 
         // Vérification si le formulaire a été soumis
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])&& $_POST['action'] == 'inscription) {
             $prenom = htmlspecialchars($_POST['prenom']);
             $nom = htmlspecialchars($_POST['nom']);
             $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -83,10 +83,11 @@ class Controller_inscription extends Controller
             if ($result) {
                 // Redirige vers la page de connexion après l'inscription
                 header("Location: index.php?controller=connexion&action=connexion");
-                exit;
+                return;
             } else {
                 $message = "Une erreur est survenue, veuillez réessayer.";
                 $this->render('inscription', ['message' => $message]);
+                return;
             }
         }
     }
