@@ -11,7 +11,7 @@
     <div class="container">
         <header class="header">
             <div class="menu-toggle">
-                <a href="parametres.html"> <i class="fas fa-cog"></i> </a>
+                <a href="view_parametres.php"> <i class="fas fa-cog"></i> </a>
             </div>
             <h1 class="title">Commencez une discussion</h1>
             <div class="send-icon">
@@ -19,61 +19,61 @@
             </div>
         </header>
         <main class="user-list">
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                  </div>
              </a>
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item alternate">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                 </div>
             </a>
-           <a href="messagerie.html" class="user-item-link">
+           <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                  </div>
              </a>
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item alternate">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                 </div>
             </a>
-             <a href="messagerie.html" class="user-item-link">
+             <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                  </div>
              </a>
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item alternate">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                 </div>
             </a>
-             <a href="messagerie.html" class="user-item-link">
+             <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                  </div>
              </a>
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item alternate">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                 </div>
             </a>
-             <a href="messagerie.html" class="user-item-link">
+             <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
                  </div>
              </a>
-            <a href="messagerie.html" class="user-item-link">
+            <a href="view_messagerie.php" class="user-item-link">
                 <div class="user-item alternate">
                     <i class="fas fa-user-circle"></i>
                     <span class="user-name">Pseudo</span>
