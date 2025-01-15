@@ -79,7 +79,7 @@ require 'view_debut.php';
     
         <!-- Bouton Valider -->
         <div>
-            <button type="submit" id="submit" name="action" value="inscritpion">Valider</button>
+            <button type="submit" id="submit" name="action" value="inscription">Valider</button>
         </div>
     </form>
     </div>
