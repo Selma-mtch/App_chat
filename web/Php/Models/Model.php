@@ -40,7 +40,7 @@ class Model {
     public function userExists($email) 
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT user_id,username, password_has FROM Usera WHERE mail = :mail');
+        $query = $this->bd->prepare('SELECT user_id,username, password_hash FROM Usera WHERE email = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
