@@ -8,7 +8,7 @@ $href1= "Cheick6/SAE_S1/web/css/messagerie.css";
 $rel2 = "";
 $href2 = "";
     
-require 'debut.php';
+require 'view_debut.php';
     
 ?>
     <div class="messagerie">
@@ -47,5 +47,5 @@ require 'debut.php';
 <?php 
 $src1 = "Cheick6/SAE_S1/web/js/messagerie.js";
 $src2 = "";
-require 'fin.php';
+require 'view_fin.php';
 ?>
