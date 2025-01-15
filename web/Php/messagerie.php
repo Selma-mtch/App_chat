@@ -45,7 +45,7 @@ require 'debut.php';
         </div>
     </div>
 <?php 
-$src1 = "Cheick6/SAE_S1/web/js/messagerie.js";
+$src1 = "../js/messagerie.js";
 $src2 = "";
 require 'fin.php';
 ?>
