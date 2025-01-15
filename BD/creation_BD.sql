@@ -1,7 +1,7 @@
 -- Database: sae1
 
 CREATE TABLE Usera (
-    user_id INT SERIAL PRIMARY KEY, 
+    user_id SERIAL PRIMARY KEY, 
     username VARCHAR(50) NOT NULL,
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
