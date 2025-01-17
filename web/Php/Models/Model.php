@@ -40,13 +40,16 @@ class Model {
     public function userExists($email) 
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT user_id,username, password_hash FROM Usera WHERE email = :mail');
+        $query = $this->bd->prepare('SELECT COUNT(*) FROM Usera WHERE email = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
     
-        // Récupérer l'utilisateur
-        return $user= $query->fetch(); 
+        // Récupération du résultat (0 ou 1, car email est censé être unique)
+        $count = $query->fetchColumn();
+
+        // Retourne true si au moins une ligne existe, sinon false
+        return $count > 0; 
     }
 /**
      * Ajoute un utilsateur passé en paramètre dans la base de données.
@@ -93,7 +96,7 @@ class Model {
     public function changePseudo($pseudo){
         if (isset($_COOKIE['user_id'])){
             $id = $_COOKIE['user_id'];
-            $query = $this->bd->prepare('UPDATE Usera SET unsername = :pseudo WHERE user_id = :id');
+            $query = $this->bd->prepare('UPDATE Usera SET username = :pseudo WHERE user_id = :id');
             $query->execute([
                 ':id' =>$id,
                 ':pseudo' =>$pseudo,
