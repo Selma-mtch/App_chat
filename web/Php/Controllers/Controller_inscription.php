@@ -31,7 +31,8 @@ class Controller_inscription extends Controller
         $message = "";
 
         // Vérification si le formulaire a été soumis
-        if (isset($_POST['submit'])&& $_POST['action'] == 'inscription) {
+        if (isset($_POST['action'])&& $_POST['action'] == 'inscription) {
+        // Récupération des champs avec protection contre les injections
             $prenom = htmlspecialchars($_POST['prenom']);
             $nom = htmlspecialchars($_POST['nom']);
             $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -41,7 +42,7 @@ class Controller_inscription extends Controller
             $password_hash = password_hash($password, PASSWORD_DEFAULT); // Hachage du mot de passe
 
             // Vérification si la case "Politique de confidentialité" a été cochée
-            if (!isset($_POST['politique']) || $_POST['politique'] !== 'on') {
+            if (!isset($_POST['politique']) || $_POST['politique'] !== 'inscription') {
                 $message = "Vous devez accepter la politique de confidentialité.";
                 $this->render('inscription', ['message' => $message]);
                 return;
@@ -78,17 +79,21 @@ class Controller_inscription extends Controller
                 'password_hash' => $password_hash
             ];
 
+            // Ajout de l'utilisateur dans la base de données
             $result = $this->model->addUser($userData);
 
             if ($result) {
                 // Redirige vers la page de connexion après l'inscription
-                header("Location: index.php?controller=connexion&action=connexion");
-                return;
+                header("Location: index.php?controller=connexion");
+                exit;
             } else {
                 $message = "Une erreur est survenue, veuillez réessayer.";
                 $this->render('inscription', ['message' => $message]);
                 return;
             }
         }
+        // Si le formulaire n'est pas soumis, afficher la page d'inscription
+        $message="Le formulaire n'a pas été soumis. Veuillez réessayer";
+        $this->render('inscription', ['message' => $message]);
     }
 }
