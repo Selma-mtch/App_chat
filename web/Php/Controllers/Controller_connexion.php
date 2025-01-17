@@ -43,7 +43,7 @@ class Controller_connexion extends Controller
                 } else {
                     // Vérification de l'utilisateur dans la base de données
                     $user = $this->model->userExists($email);
-                    $verif_pswd=$this->model->checkMdp($password);
+                    $verif_pswd=$this->model->checkMdp($email,$password);
     
                      //Si l'utilisateur existe dans la BD et que le mot de passe et correct
                     if ($user && $verif_pswd) {
