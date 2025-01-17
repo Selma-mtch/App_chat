@@ -8,7 +8,7 @@ CREATE TABLE Usera (
     genre CHAR(1),
     password_hash VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    CONSTRAINT type_genre CHECK (genre ~* '^[FM]$')
+    CONSTRAINT type_genre CHECK (genre ~* '^[FM]$') //CONSTRAINT type_genre CHECK (genre IN ('F', 'M')), -- Limite les valeurs de genre à 'F' ou 'M'
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure de création du compte, peut se remplir par défaut
     last_online_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Date et heure de dernière connexion
 );
