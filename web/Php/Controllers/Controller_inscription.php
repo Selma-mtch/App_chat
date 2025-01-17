@@ -31,7 +31,7 @@ class Controller_inscription extends Controller
         $message = "";
 
         // Vérification si le formulaire a été soumis
-        if (isset($_POST['action'])&& $_POST['action'] == 'inscription) {
+        if (isset($_POST['action'])&& $_POST['action'] == 'inscription') {
         // Récupération des champs avec protection contre les injections
             $prenom = htmlspecialchars($_POST['prenom']);
             $nom = htmlspecialchars($_POST['nom']);
