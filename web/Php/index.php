@@ -6,7 +6,7 @@ require_once "Controllers/Controller.php";
 require_once "Controllers/Controller_connexion.php";
 
 // Liste des contrôleurs
-$controllers = ["connexion", "accueil", "deconnexion", "changePseudo", "changemdp", "inscription"]; 
+$controllers = ["connexion", "accueil", "deconnexion", "changePseudo", "changemdp", "inscription", "politique"]; 
 
 // Nom du contrôleur par défaut
 $controller_default = "connexion";
