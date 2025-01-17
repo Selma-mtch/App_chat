@@ -61,7 +61,7 @@ class Model {
         VALUES (:pseudo, :nom, :prenom, :genre, :mail, :pswd)');
 
         //Remplacement des marqueurs de place par les valeurs
-        $success= $requete->$execute([
+        $success= $requete->execute([
                     ':pseudo'=>$infos['pseudo'], 
                     ':nom'=>$infos['nom'], 
                     ':prenom'=>$infos['prenom'], 
