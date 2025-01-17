@@ -73,7 +73,7 @@ require 'view_debut.php';
     
         <!-- Politique -->
         <div>
-            <label for="politique">J'accepte la <a href="politique.php">politique de confidentialité</a></label>
+            <label for="politique">J'accepte la <a href="index.php?controller=politique">politique de confidentialité</a></label>
             <input type="checkbox" id="politique" name="politique" value="inscription">
         </div>
     
