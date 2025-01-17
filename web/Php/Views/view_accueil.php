@@ -15,9 +15,6 @@
                 <a href="index.php?controller=parametres"> <i class="fas fa-cog"></i> </a>
             </div>
             <h1 class="title">Commencez une discussion</h1>
-            <div class="send-icon">
-                <i class="fas fa-paper-plane"></i>
-            </div>
         </header>
         <main class="user-list">
             <a href="index.php?controller=messagerie" class="user-item-link">
