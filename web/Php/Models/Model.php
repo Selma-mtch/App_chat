@@ -74,7 +74,7 @@ class Model {
         return $success;
             }catch (PDOException $e) {
                 // Gestion des erreurs
-                echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
+                error_log("Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage());;
                 return false; // Retourne false en cas d'échec
             }
     }
@@ -103,12 +103,28 @@ class Model {
     return 'utilisateur introuvable reconnectez vous'; 
     }
 
-    public function checkMdp($mdp){
-        $query = $this->bd->prepare('SELECT * FROM Usera WHERE password_hash= :pswd');
+    public function checkMdp($email,$mdp){
+        $query = $this->bd->prepare('SELECT password_hash FROM Usera WHERE email= :email');
         $query->execute([
-            ':pswd' =>$mdp
+            ':email' =>$email
         ]);
-        return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+
+        //Récupérer le mot de passe haché
+        $user=$query->fetch(PDO::FETCH_ASSOC);
+        
+        if($user){
+            // Comparaison du mot de passe entrée avec le haché
+            if (password_verify($mdp,$user['password_hash'])){
+                // Le mot de passe est correct
+                return true;
+            }else{
+                // Le mot de passe est incorrect
+                return false;
+            }
+        }else {
+                // L'utilisateur n'a pas été trouvé (email incorrect)
+                return false;
+        }
     }
 
     public function changeMdp($actuel, $newmdp){
