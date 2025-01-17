@@ -82,6 +82,12 @@ require 'view_debut.php';
             <button type="submit" id="submit" name="action" value="inscription">Valider</button>
         </div>
     </form>
+
+     <?php if (isset($message) && !empty($message)): ?>
+        <div class="message">
+            <?php echo htmlspecialchars($message); ?>
+        </div>
+        <?php endif ?>
     </div>
  
      <p>Déja inscrit ? <a href="index.php?controller=connexion">Connectez vous</a> ! </p> 
