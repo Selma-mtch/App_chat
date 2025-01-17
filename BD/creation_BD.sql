@@ -14,14 +14,14 @@ CREATE TABLE Usera (
 );
 
 CREATE TABLE UserStatus (
-    user_id INT PRIMARY KEY, 
+    user_id SERIAL PRIMARY KEY, 
     is_online BOOLEAN, 
     last_active_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP , 
     FOREIGN KEY (user_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
 );
 
 CREATE TABLE Conversation (
-    conversation_id INT PRIMARY KEY, 
+    conversation_id SERIAL PRIMARY KEY, 
     user_1_id INT, 
     user_2_id INT, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP , 
@@ -29,7 +29,7 @@ CREATE TABLE Conversation (
     FOREIGN KEY (user_2_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
 );
 CREATE TABLE Message (
-    message_id INT PRIMARY KEY, 
+    message_id SERIAL PRIMARY KEY, 
     conversation_id INT, 
     sender_id INT, 
     receiver_id INT, 
@@ -43,7 +43,7 @@ CREATE TABLE Message (
 CREATE TYPE emotion_enum AS ENUM ('joie', 'colere', 'tristesse', 'surprise', 'degout', 'peur');-- création du type enum
 
 CREATE TABLE Annotation (
-    annotation_id INT PRIMARY KEY, 
+    annotation_id SERIAL PRIMARY KEY, 
     message_id INT, 
     annotator_id INT, 
     emotion emotion_enum NOT NULL,
