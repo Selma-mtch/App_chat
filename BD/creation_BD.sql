@@ -40,13 +40,13 @@ CREATE TABLE Message (
     FOREIGN KEY (receiver_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
 );
 
-CREATE TYPE emotion_enum AS ENUM ('joie', 'colere', 'tristesse', 'surprise', 'degout', 'peur');-- création du type enum
+/* CREATE TYPE emotion_enum AS ENUM ('joie', 'colere', 'tristesse', 'surprise', 'degout', 'peur');-- création du type enum */
 
 CREATE TABLE Annotation (
     annotation_id SERIAL PRIMARY KEY, 
     message_id INT, 
-    annotator_id INT, 
-    emotion emotion_enum NOT NULL,
+    annotator_id INT,
+    emotion ENUM('joie', 'colere', 'tristesse', 'surprise', 'degout', 'peur') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Date et heure de création de l'annotation
     FOREIGN KEY (message_id) REFERENCES Message(message_id), -- Clé étrangère référençant la table Message
     FOREIGN KEY (annotator_id) REFERENCES Usera(user_id) -- Clé étrangère référençant la table Usera
