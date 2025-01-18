@@ -13,8 +13,8 @@ Ce projet est une application de messagerie en temps réel qui permet aux utilis
 ## 📦 Architecture du Projet
 
 1. **Back-end** : Développé en **PHP** avec une bibliothèque WebSocket (comme **Ratchet** ou **Swoole**) pour gérer la communication en temps réel.
-2. **Front-end** : Interface utilisateur en **HTML, CSS et JavaScript** pour envoyer, recevoir, et annoter les messages.
-3. **Base de données** : Utilisation de **PostgreSQL** (administrée via **pgAdmin**) pour stocker les utilisateurs, messages et annotations.
+2. **Front-end** : Interface utilisateur en **Php, CSS et JavaScript** pour envoyer, recevoir, et annoter les messages.
+3. **Base de données** : Utilisation de **PostgreSQL, mysql** (administrée via **pgAdmin, mysql**) pour stocker les utilisateurs, messages et annotations.
 
 ## 📋 Pré-requis
 
