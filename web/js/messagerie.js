@@ -1,5 +1,5 @@
 // Établir la connexion WebSocket avec le serveur
-const socket = new WebSocket('ws://172.20.10.4:8081');
+const socket = new WebSocket('ws://192.168.1.208:8081');
 
 // Ajout du code de statut de la connexion
 const statusMessage = document.getElementById('status-message');
@@ -159,7 +159,7 @@ function afficherMessage(messageData, showAnnotations) {
 function annoterMessageRecu(messageContainer) {
     var emojiSelect = document.createElement('select');
     emojiSelect.id = 'emojiSelectAnnotation';
-    var emojis = ['😡​', '😂', '😍', '😊', '👍'];
+    var emojis = ['😊','😡​', ' 😞', ' 😖 ', '😵‍💫', ' 😰'];
     emojis.forEach(function (emoji) {
         var option = document.createElement('option');
         option.value = emoji;

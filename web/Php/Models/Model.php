@@ -17,9 +17,9 @@ class Model {
     public function __construct()
     {
         try{
-        $this->bd= new PDO('mysql:host=localhost;dbname=appli', 'root','');
-        $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->bd->query("SET NAMES 'utf8'");
+           $this->bd= new PDO('mysql:host=127.0.0.1;dbname=appli', 'root','');
+            $this->bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->bd->query("SET NAMES 'utf8'");
         }catch(PDOException $e){
             die("Erreur de connexion à la base de données: ". $e->getMessage());
         }
@@ -37,81 +37,69 @@ class Model {
     }
 
     //verifie si l'utilisateur existe renvoie faux si 
-    public function userExists($email) 
+   public function userExists($email)
     {
         // Préparation de la requête pour récupérer l'utilisateur et le mot de passe
-        $query = $this->bd->prepare('SELECT COUNT(*) FROM Usera WHERE email = :mail');
+        $query = $this->bd->prepare('SELECT user_id,username, password_hash FROM Usera WHERE email = :mail');
         $query->execute([
             ':mail' => $email // On peut passer directement $email sans htmlspecialchars car déjà verifié dans la méthode execute
         ]);
-    
-        // Récupération du résultat (0 ou 1, car email est censé être unique)
-        $count = $query->fetchColumn();
-
-        // Retourne true si au moins une ligne existe, sinon false
-        return $count > 0; 
+        // Récupérer l'utilisateur
+        return $user= $query->fetch();
     }
-/**
+    /**
      * Ajoute un utilsateur passé en paramètre dans la base de données.
      * @return [boolean] retourne true si la personne a été ajoutée dans la base de données, et false sinon
      */
     public function addUser($infos)
     {
-        try {
+        try{
+        //Préparation de la requête
+        $requete = $this->bd->prepare('
+        INSERT INTO Usera (username, nom, prenom, genre, email, password_hash)
+        VALUES (:pseudo, :nom, :prenom, :genre, :mail, :pswd)');
 
-            // Préparation de la requête
-            $requete = $this->bd->prepare('
-            INSERT INTO Usera (username, nom, prenom, genre, email, password_hash)
-            VALUES (:pseudo, :nom, :prenom, :genre, :mail, :pswd)');
+        //Remplacement des marqueurs de place par les valeurs
+        $success = $requete->execute([
+                    ':pseudo'=>$infos['pseudo'],
+                    ':nom'=>$infos['nom'],
+                    ':prenom'=>$infos['prenom'],
+                    ':genre'=>$infos['genre'],
+                    ':mail'=>$infos['email'],
+                    ':pswd'=> $infos['password_hash'],
+                ]);
 
-            // Remplacement des marqueurs
-            $success = $requete->execute([
-                ':pseudo' => $infos['pseudo'],
-                ':nom' => $infos['nom'],
-                ':prenom' => $infos['prenom'],
-                ':genre' => $infos['genre'],
-                ':mail' => $infos['email'],
-                ':pswd' => $infos['password_hash'],
-            ]);
-
-            return $success;
-        } catch (PDOException $e) {
-            error_log("Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage());
-            return false;
-        }
+        //Retourne true si l'insertion a réussi, sinon false
+        return $success;
+            }catch (PDOException $e) {
+                // Gestion des erreurs
+                error_log("Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage());;
+                return false; // Retourne false en cas d'échec
+            }
     }
 
+    public function checkUser($email, $password){
+         $query = $this->bd->prepare('SELECT * FROM Usera WHERE email = :mail');
+         $query->execute([':mail'=>$email]);
 
-    /**
-    *public function checkUser($email, $password){
-    *    $query = $this->bd->prepare('SELECT*FROM Usera WHERE email= :mail AND password_hash= :pswd');
-    *    $query->$execute([
-    *        ':mail'=>$email,
-    *        ':pswd' => $password,
-    *    ]);
-    *    return $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
-    *}
-    */
-
+        $user = $query->fetch(PDO::FETCH_ASSOC); // Retourne l'utilisateur ou false
+        if ($user && password_verify($password, $user['password_hash'])) {
+            return $user; // Si l'utilisateur existe et que le mot de passe correspond, on retourne l'utilisateur
+       } else {
+            return false; // Si l'utilisateur n'existe pas ou que le mot de passe ne correspond pas, on retourne false
+       }
+    }
     public function changePseudo($pseudo){
-        if (isset($_COOKIE['user_id'])) {
+        if (isset($_COOKIE['user_id'])){
             $id = $_COOKIE['user_id'];
-    
-            // Préparation de la requête
             $query = $this->bd->prepare('UPDATE Usera SET username = :pseudo WHERE user_id = :id');
             $query->execute([
-                ':id' => $id,
-                ':pseudo' => $pseudo,
+                ':id' =>$id,
+                ':pseudo' =>$pseudo,
             ]);
-    
-            // Vérifier si la mise à jour a modifié des lignes
-            if ($query->rowCount() > 0) {
-                return true;
-            } else {
-                return 'Aucune modification effectuée. Assurez-vous que le pseudo est différent de l\'ancien.';
-            }
+            return $query->rowCount() > 0;
         }
-        return 'Utilisateur introuvable ou cookie expiré.';
+    return 'utilisateur introuvable reconnectez vous';
     }
 
     public function checkMdp($email,$mdp){
@@ -122,7 +110,7 @@ class Model {
 
         //Récupérer le mot de passe haché
         $user=$query->fetch(PDO::FETCH_ASSOC);
-        
+
         if($user){
             // Comparaison du mot de passe entrée avec le haché
             if (password_verify($mdp,$user['password_hash'])){
@@ -137,49 +125,15 @@ class Model {
                 return false;
         }
     }
-
-    public function changeMdp($actuel, $newmdp){
-        // Hachage du nouveau mot de passe avant de l'insérer dans la base de données
-        $hashedPassword = password_hash($newmdp, PASSWORD_DEFAULT);
-    
-        // Mise à jour du mot de passe dans la base de données
+        public function changeMdp($actuel, $newmdp){
         $query = $this->bd->prepare('UPDATE Usera SET password_hash = :newmdp WHERE password_hash = :pswd');
         $query->execute([
-            ':newmdp' => $hashedPassword,
-            ':pswd' => $actuel,
+            ':newmdp' =>$newmdp,
+            ':pswd' =>$actuel,
         ]);
-    
         return $query->rowCount() > 0;
     }
-    
-
-    public function checkMdpId($password){
-        if (isset($_COOKIE['user_id'])){
-            $userId = $_COOKIE['user_id'];
-            $query = $this->bd->prepare('SELECT password_hash FROM Usera WHERE user_id = :user_id');
-            $query->execute([
-                ':user_id' =>$userId
-            ]);
-
-            $user = $query->fetch(PDO::FETCH_ASSOC);
-            if($user){
-                if (password_verify($password, $user['password_hash'])){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-            else{
-                return false;
-            }
-        }
-        else{
-            return 'utilisateur nn connecté';
-        }
-    }
-
-    public function deconnexion(){
+     public function deconnexion(){
         if (isset($_COOKIE['user_id'])){
             $userId = $_COOKIE['user_id'];
             $stmt = $this->bd->prepare("UPDATE Usera SET last_online_at = NOW() WHERE user_id = :user_id");
@@ -188,12 +142,32 @@ class Model {
         }
         else{
             return 'Utilisateur non connecté.';
-        }  
-    }
+        }
 
-    public function getUserByEmail($email) {
-        $query = $this->bd->prepare('SELECT * FROM Usera WHERE email = :email');
-        $query->execute([':email' => $email]);
-        return $query->fetch(PDO::FETCH_ASSOC); // Retourne les détails de l'utilisateur
+
     }
+        public function addMessage($messageData)
+        {
+            try{
+            //Préparation de la requête
+             $requete = $this->bd->prepare('
+            INSERT INTO Message (conversation_id, sender_id, receiver_id, content)
+            VALUES (:conversation_id, :sender_id, :receiver_id, :content)');
+
+
+            //Remplacement des marqueurs de place par les valeurs
+             $success = $requete->execute([
+                        ':conversation_id'=>$messageData['conversation_id'],
+                        ':sender_id'=>$messageData['sender_id'],
+                        ':receiver_id'=>$messageData['receiver_id'],
+                        ':content'=> $messageData['message']
+                ]);
+            //Retourne true si l'insertion a réussi, sinon false
+             return $success;
+           }catch (PDOException $e) {
+                // Gestion des erreurs
+                 error_log("Erreur lors de l'ajout du message : " . $e->getMessage());
+               return false; // Retourne false en cas d'échec
+           }
+         }
 }

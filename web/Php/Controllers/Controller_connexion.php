@@ -28,46 +28,44 @@ class Controller_connexion extends Controller
      * Action de connexion
      */
 
-    public function action_connexion() {
+     public function action_connexion() {
         $message = "";
-
+    
         // Vérification des champs
-        if (isset($_POST['action']) && $_POST['action'] === 'connexion') {
+        if (isset($_POST['action']) && $_POST['action'] == 'connexion') {
             if (!empty($_POST['addMail']) && !empty($_POST['password'])) {
                 $email = htmlspecialchars($_POST['addMail']);
                 $password = htmlspecialchars($_POST['password']);
-
+    
                 // Validation du format de l'email
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     $message = "L'adresse mail n'a pas le bon format.";
                 } else {
-                    // Vérification de l'existence de l'utilisateur
-                    if ($this->model->userExists($email)) {
-                        // Vérification du mot de passe
-                        if ($this->model->checkMdp($email, $password)) {
-                            // Récupération des détails de l'utilisateur
-                            $user = $this->model->getUserByEmail($email);
-
-                            // Création du cookie
-                            if (setcookie("user_id", $user['user_id'], time() + 3600, "/", "", true, true)) {
-                                header("Location: index.php?controller=accueil");
-                                exit;
-                            } else {
-                                $message = "Erreur lors de la création du cookie.";
-                            }
-                        } else {
-                            $message = "Mot de passe incorrect.";
-                        }
+                    // Vérification de l'utilisateur dans la base de données
+                    $user = $this->model->userExists($email);
+                    $verif_pswd=$this->model->checkMdp($email,$password);
+    
+                     //Si l'utilisateur existe dans la BD et que le mot de passe et correct
+                    if ($user && $verif_pswd) {
+                        // Connexion réussie
+                        //$message = "Connexion réussie. Bienvenue, " . htmlspecialchars($user['pseudo']);
+    
+                        // Création d'un cookie pour identifier l'utilisateur
+                        setcookie("user_id", $user['user_id'], time() + 3600, "/"); // Expire après 1 heure
+    
+                        // Redirection vers l'accueil
+                        header("Location: index.php?controller=accueil");
+                        exit;
                     } else {
-                        $message = "Adresse mail incorrecte ou utilisateur inexistant.";
+                        $message = "Adresse mail ou mot de passe incorrect.";
                     }
                 }
             } else {
                 $message = "Veuillez remplir tous les champs.";
             }
         }
-
-        // Rendre la vue connexion avec le message
+    
+        // Rendre la vue connexion avec le message d'erreur ou succès
         $this->render('connexion', ['message' => $message]);
     }
     
