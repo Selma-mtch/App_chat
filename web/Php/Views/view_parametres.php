@@ -22,28 +22,10 @@
 
     <main>
         <section id="all">
-            <a href="index.php?controller=theme">
-                <div class="setting-item">
-                    <i class="fas fa-palette"></i>
-                    <h2>Changer le thème</h2>
-                </div>
-            </a>
-            <a href="index.php?controller=changePseudo">
-                <div class="setting-item">
-                    <i class="fas fa-user"></i>
-                    <h2>Changer le pseudo</h2>
-                </div>
-            </a>
             <a href="index.php?controller=condition">
                 <div class="setting-item">
                     <i class="fas fa-file-alt"></i>
                     <h2>Lire les conditions d'utilisation</h2>
-                </div>
-            </a>
-            <a href="index.php?controller=changemdp">
-                <div class="setting-item">
-                    <i class="fas fa-lock"></i>
-                    <h2>Modifier le mot de passe</h2>
                 </div>
             </a>
             <a href="index.php?controller=politique">
@@ -55,10 +37,12 @@
         </section>
 
         <section id="allde">
+            <a href="index.php?controller=connexion">
             <div class="setting-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <h2>Déconnexion</h2>
             </div>
+            </a>
         </section>
     </main>
 
