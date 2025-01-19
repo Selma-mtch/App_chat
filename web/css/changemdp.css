@@ -1,0 +1,108 @@
+#header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alignement à gauche */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky; /* Pour que le header reste en haut */
+    top: 0;
+    z-index: 10; /* Pour s'assurer que le header reste au-dessus du contenu */
+}
+
+#retour {
+    width: 40px; /* Plus petite image de retour */
+    margin-right: 20px;
+    cursor: pointer; /* Indique que l'image est cliquable */
+    transition: transform 0.2s ease;
+    margin-left: 0;
+}
+
+#retour:hover {
+    transform: scale(1.1); /* Effet de zoom au survol */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+#titre {
+    display: flex;
+    align-items: center;
+    color: #2c3e50;
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: auto;
+    font-weight: 500;
+}
+
+.form-wrapper {
+    display: inline-block;
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+    background-color: rgb(30, 176, 212);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="password"] {
+    width: 250px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="password"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.message {
+    background-color: #ffe6e6;
+    color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    margin-top: 80px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optionnel, ajoute une ombre en haut du footer */
+}
