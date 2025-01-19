@@ -45,7 +45,7 @@ require 'view_debut.php';
         <div>
             <label for="genre"> <img src="../img/les-genres.png" />Genre:</label>
             <select id="genre" name="genre" required>
-                <option value="H">Homme</option>
+                <option value="M">Homme</option>
                 <option value="F">Femme</option>
             </select>
             <small class="error-message">Veuillez sélectionner un genre.</small>
