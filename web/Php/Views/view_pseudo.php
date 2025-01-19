@@ -21,17 +21,17 @@
         <div class="form-wrapper">
             <i class="fas fa-user fa-3x"></i>
             <h2>Entrer votre nouveau pseudo</h2>
-            <form method='POST'>
+            <form method='POST' action="index.php?controller=changePseudo&action=changePseudo">
                 <input type="text" id="nouveauPseudo" name="nouveauPseudo" placeholder="Votre nouveau pseudo">
                 <button type="submit"><i class="fas fa-save"></i> Enregistrer</button>
             </form>
         </div>
-        <?php if (isset($message) && !empty($message)): ?>
-        <div class="message">
-            <?php echo htmlspecialchars($message); ?>
-        </div>
-        <?php endif ?>
+        
+
     </div>
+    <?php if (isset($message) && !empty($message)): ?>
+        <div class="message"><?= htmlspecialchars($message) ?></div>
+    <?php endif; ?>
 </body>
 </html>
 <?php
