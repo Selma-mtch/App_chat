@@ -1,6 +1,6 @@
 # 📬 Application de Messagerie avec Annotations par Émoji
 
-Ce projet est une application de messagerie en temps réel qui permet aux utilisateurs d'envoyer et de recevoir des messages après avoir sélectionné une émoji en tant qu'annotation. L'application utilise **WebSockets** pour une communication en temps réel et une **base de données PostgreSQL** pour stocker les messages et les annotations.
+Ce projet est une application de messagerie en temps réel qui permet aux utilisateurs d'envoyer et de recevoir des messages après avoir sélectionné un émoji en tant qu'annotation. L'application utilise **WebSockets** pour une communication en temps réel et une **base de données PostgreSQL** pour stocker les messages et les annotations.
 
 ## 🚀 Fonctionnalités
 
@@ -30,4 +30,3 @@ Ce projet est une application de messagerie en temps réel qui permet aux utilis
    ```bash
    git clone https://github.com/Cheick6/SAE_S1.git
    cd SAE_S1
-   blablabla
